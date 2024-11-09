@@ -1,3 +1,8 @@
 header {
     background-color: #42AFF8;
 }
+
+#logo {
+    max-height: 10vh;
+    max-width: 10vw;
+}
