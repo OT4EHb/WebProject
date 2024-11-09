@@ -6,3 +6,8 @@ header {
     max-height: 10vh;
     max-width: 10vw;
 }
+
+.navlink {
+    color:#42AFF8;
+    text-decoration: none;
+}
