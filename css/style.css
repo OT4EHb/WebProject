@@ -11,3 +11,7 @@ header {
     color:#42AFF8;
     text-decoration: none;
 }
+
+.carousel-control-next, .carousel-control-prev {
+    width: 8.33333333%;
+}
