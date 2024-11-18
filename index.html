@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Планктон-ЮГ</title>
-    <link rel="icon" href="./source/HighQualityLogoNoBG.png" type="image/x-icon">
+    <link rel="icon" href="source/HighQualityLogoNoBG.png" type="image/x-icon">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/bootstrap.bundle.min.js" defer></script>
@@ -11,7 +11,7 @@
 </head>
 <body class="container-fluid">
     <header class="row align-items-stretch px-md-4">
-        <div class="col">
+        <div class="col d-flex align-items-center">
             <img src="source/HighQualityLogoNoBG.png" id="logo">
         </div>
         <h1 class="col-8 d-flex align-items-center justify-content-center text-white">Планктон-ЮГ</h1>
@@ -19,45 +19,45 @@
             <img src="source/bootstrap-icons-1.11.3/cart.svg" class="d-inline-block h-50">
         </div>
     </header>
-    <nav class="row justify-content-center">
+    <nav class="row justify-content-center my-1">
         <div class="navbar col-4">
-            <a class="navlink">О нас</a>
+            <a class="navlink" href="#about">О нас</a>
             <span>|</span>
-            <a class="navlink">Наш товар</a>
+            <a class="navlink" href="#tovar">Наш товар</a>
             <span>|</span>
-            <a class="navlink">Заказать</a>
+            <a class="navlink" href="#zakaz">Заказать</a>
         </div>
     </nav>
     <main class="row text-center px-md-4">
-        <!--Оставлю пока 8 колонок выглядит лучше 10-->
-        <div class="row justify-content-center">
-            <div class="col-8 mt-2 mb-1">
-                <h2>О нас</h2>
+        <div class="row justify-content-center my-1" id="about">
+            <div class="col-10">
+                <h2 class="text-primary">О нас</h2>
             </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-3">
-                <img src="source/AboutUs1.jpg" class="w-100 mb-4 rounded-5">
-                <img src="source/AboutUs2.jpg" class="w-100 rounded-5">
+        <div class="row justify-content-center my-1">
+            <!--Поменяем в зависимости от текста-->
+            <div class="col-4 d-flex flex-column justify-content-between">
+                <img src="source/AboutUs/AboutUs1.jpg" class="w-100 mb-4 rounded-5">
+                <img src="source/AboutUs/AboutUs2.jpg" class="w-100 rounded-5">
             </div>
-            <div class="col-5 d-flex flex-column h-100 justify-content-between">
-                <p class="bg-info">
+            <div class="col-6 d-flex flex-column h-100 justify-content-between">
+                <p class="bg-info rounded-5 p-2 h-100 d-flex align-items-center mb-4">
                     Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur", и занялся его поисками в классической латинской литературе. В результате он нашёл неоспоримый первоисточник Lorem Ipsum в разделах 1.10.32 и 1.10.33 книги "de Finibus Bonorum et Malorum" ("О пределах добра и зла"), написанной Цицероном в 45 году н.э. Этот трактат по теории этики был очень популярен в эпоху Возрождения. Первая строка Lorem Ipsum, "Lorem ipsum dolor sit amet..", происходит от одной из строк в разделе 1.10.32
 
                     Классический текст Lorem Ipsum, используемый с XVI века, приведён ниже. Также даны разделы 1.10.32 и 1.10.33 "de Finibus Bonorum et Malorum" Цицерона и их английский перевод, сделанный H. Rackham, 1914 год.
                 </p>
-                <img src="source/AboutUs3.jpeg" class="w-100 rounded-5">
+                <img src="source/AboutUs/AboutUs3.jpeg" class="w-100 rounded-5">
+            </div>
+        </div>
+        <div class="row justify-content-center" id="tovar">
+            <div class="col-10 my-2">
+                <h2 class="text-primary">Наш товар</h2>
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-8 mt-2 mb-1">
-                <h2>Наш товар</h2>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-10">
+            <div class="col-10 my-1">
                 <div id="carouselExampleIndicators" class="carousel slide bg-dark" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
+                    <div class="carousel-indicators m-0">
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                     </div>
@@ -65,69 +65,61 @@
                         <div class="carousel-item active">
                             <div class="row justify-content-center">
                                 <div class="card col-2 m-4">
-                                    <img src="..." class="card-img-top" alt="...">
+                                    <img src="source/card/1.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">Заголовок карточки</h5>
-                                        <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
-                                        <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+                                        <p class="card-text">текст</p>
+                                        <a href="#" class="btn btn-primary">Подробнее</a>
                                     </div>
                                 </div>
                                 <div class="card col-2 m-4">
-                                    <img src="..." class="card-img-top" alt="...">
+                                    <img src="source/card/2.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">Заголовок карточки</h5>
-                                        <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
-                                        <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+                                        <p class="card-text">текст</p>
+                                        <a href="#" class="btn btn-primary">Подробнее</a>
                                     </div>
                                 </div>
                                 <div class="card col-2 m-4">
-                                    <img src="..." class="card-img-top" alt="...">
+                                    <img src="source/card/3.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">Заголовок карточки</h5>
-                                        <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
-                                        <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+                                        <p class="card-text">текст</p>
+                                        <a href="#" class="btn btn-primary">Подробнее</a>
                                     </div>
                                 </div>
                                 <div class="card col-2 m-4">
-                                    <img src="..." class="card-img-top" alt="...">
+                                    <img src="source/card/4.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">Заголовок карточки</h5>
-                                        <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
-                                        <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+                                        <p class="card-text">текст</p>
+                                        <a href="#" class="btn btn-primary">Подробнее</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
                                 <div class="card col-2 m-4">
-                                    <img src="..." class="card-img-top" alt="...">
+                                    <img src="source/card/5.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">Заголовок карточки</h5>
-                                        <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
-                                        <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+                                        <p class="card-text">текст</p>
+                                        <a href="#" class="btn btn-primary">Подробнее</a>
                                     </div>
                                 </div>
                                 <div class="card col-2 m-4">
-                                    <img src="..." class="card-img-top" alt="...">
+                                    <img src="source/card/6.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">Заголовок карточки</h5>
-                                        <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
-                                        <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+                                        <p class="card-text">текст</p>
+                                        <a href="#" class="btn btn-primary">Подробнее</a>
                                     </div>
                                 </div>
                                 <div class="card col-2 m-4">
-                                    <img src="..." class="card-img-top" alt="...">
+                                    <img src="source/card/7.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">Заголовок карточки</h5>
-                                        <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
-                                        <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+                                        <p class="card-text">текст</p>
+                                        <a href="#" class="btn btn-primary">Подробнее</a>
                                     </div>
                                 </div>
                                 <div class="card col-2 m-4">
-                                    <img src="..." class="card-img-top" alt="...">
+                                    <img src="source/card/8.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">Заголовок карточки</h5>
-                                        <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
-                                        <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+                                        <p class="card-text">текст</p>
+                                        <a href="#" class="btn btn-primary">Подробнее</a>
                                     </div>
                                 </div>
                             </div>
@@ -135,69 +127,61 @@
                         <div class="carousel-item">
                             <div class="row justify-content-center">
                                 <div class="card col-2 m-4">
-                                    <img src="..." class="card-img-top" alt="...">
+                                    <img src="source/card/9.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">Заголовок карточки</h5>
-                                        <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
-                                        <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+                                        <p class="card-text">текст</p>
+                                        <a href="#" class="btn btn-primary">Подробнее</a>
                                     </div>
                                 </div>
                                 <div class="card col-2 m-4">
-                                    <img src="..." class="card-img-top" alt="...">
+                                    <img src="source/card/10.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">Заголовок карточки</h5>
-                                        <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
-                                        <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+                                        <p class="card-text">текст</p>
+                                        <a href="#" class="btn btn-primary">Подробнее</a>
                                     </div>
                                 </div>
                                 <div class="card col-2 m-4">
-                                    <img src="..." class="card-img-top" alt="...">
+                                    <img src="source/card/11.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">Заголовок карточки</h5>
-                                        <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
-                                        <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+                                        <p class="card-text">текст</p>
+                                        <a href="#" class="btn btn-primary">Подробнее</a>
                                     </div>
                                 </div>
                                 <div class="card col-2 m-4">
-                                    <img src="..." class="card-img-top" alt="...">
+                                    <img src="source/card/12.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">Заголовок карточки</h5>
-                                        <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
-                                        <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+                                        <p class="card-text">текст</p>
+                                        <a href="#" class="btn btn-primary">Подробнее</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
                                 <div class="card col-2 m-4">
-                                    <img src="..." class="card-img-top" alt="...">
+                                    <img src="source/card/1.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">Заголовок карточки</h5>
-                                        <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
-                                        <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+                                        <p class="card-text">текст</p>
+                                        <a href="#" class="btn btn-primary">Подробнее</a>
                                     </div>
                                 </div>
                                 <div class="card col-2 m-4">
-                                    <img src="..." class="card-img-top" alt="...">
+                                    <img src="source/card/1.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">Заголовок карточки</h5>
-                                        <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
-                                        <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+                                        <p class="card-text">текст</p>
+                                        <a href="#" class="btn btn-primary">Подробнее</a>
                                     </div>
                                 </div>
                                 <div class="card col-2 m-4">
-                                    <img src="..." class="card-img-top" alt="...">
+                                    <img src="source/card/1.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">Заголовок карточки</h5>
-                                        <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
-                                        <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+                                        <p class="card-text">текст</p>
+                                        <a href="#" class="btn btn-primary">Подробнее</a>
                                     </div>
                                 </div>
                                 <div class="card col-2 m-4">
-                                    <img src="..." class="card-img-top" alt="...">
+                                    <img src="source/card/1.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">Заголовок карточки</h5>
-                                        <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
-                                        <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+                                        <p class="card-text">текст</p>
+                                        <a href="#" class="btn btn-primary">Подробнее</a>
                                     </div>
                                 </div>
                             </div>
@@ -214,11 +198,19 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-10 my-4">
-                <button class="bg-info text-white">Оформить заказ</button>
+        <div class="row justify-content-center" id="zakaz">
+            <div class="col-4 my-5">
+                <button class="bg-info text-white w-100 rounded-5 py-3 border "><h3>Оформить заказ</h3></button>
             </div>
         </div>
     </main>
+    <footer class="row justify-content-center">
+        <p class="col-10 mb-5 text-center">
+            ИП Шипула Юрий Владимирович Действующий на основании св-ва 23 № 001539812 от 11.11.2003г. ОГРНИП № 304230915400047<br>
+            ИНН 230905580352 КПП 230901001 Адрес юрид. : 350001, Россия, Краснодарский край, г. Краснодар, ул. 5-ая линия ПРК, д. 64<br>
+            р/с 40802810200000000293 в КБ «Кубань Кредит» ООО г. Краснодар к/с 30101810200000000722 БИК 040349722 ОКВЭД 15.72<br>
+            Электронная почта: Shipyla@yandex.ru Тел.: 89184499520, 89186907410
+        </p>
+    </footer>
 </body>
 </html>
