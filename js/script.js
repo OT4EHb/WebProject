@@ -4,13 +4,14 @@ window.addEventListener("DOMContentLoaded", function () {
         i.contentWindow.addEventListener("DOMContentLoaded", function () {
             let svg = this.document.querySelector("path");
             icons.push(svg);
-            svg.addEventListener("click", function () {
-                let list = this.classList;
+            this.document.addEventListener("click", function () {
+                let path = this.querySelector("path");
+                let list = path.classList;
                 list.toggle("selected");
                 if (list.value === "selected") {
-                    this.attributes["fill"].value = "#44AEE8";
+                    path.attributes["fill"].value = "#44AEE8";
                 } else {
-                    this.attributes["fill"].value = "black";
+                    path.attributes["fill"].value = "black";
                 }
             });
         });

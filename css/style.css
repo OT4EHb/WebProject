@@ -2,6 +2,6 @@ body {
     background-color: gray;
 }
 
-header div img{
+header div img, .panel{
     height: 8vh;
 }
