@@ -4,206 +4,51 @@
     <meta charset="UTF-8">
     <title>Планктон-ЮГ</title>
     <link rel="icon" href="source/HighQualityLogoNoBG.png" type="image/x-icon">
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="js/bootstrap.bundle.min.js" defer></script>
+    <script src="js/script.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body class="container-fluid">
-    <header class="row align-items-stretch px-md-4">
-        <div class="col d-flex align-items-center">
-            <img src="source/HighQualityLogoNoBG.png" id="logo">
+    <header class="row">
+        <div class="col">
+            <img src="source/HighQualityLogoNoBG.png">
         </div>
-        <h1 class="col-8 d-flex align-items-center justify-content-center headTitle"><strong>Планктон-ЮГ</strong></h1>
-        <div class="col d-flex align-items-center justify-content-end">
-            <img src="source/bootstrap-icons-1.11.3/cart.svg" class="d-inline-block h-50">
+        <div class="col d-flex justify-content-end">
+            <img src="source/icons/cart.svg">
         </div>
     </header>
-    <nav class="row justify-content-center my-1">
-        <div class="navbar col-4">
-            <a class="navlink" href="#about">О нас</a>
-            <span>|</span>
-            <a class="navlink" href="#tovar">Наш товар</a>
-            <span>|</span>
-            <a class="navlink" href="#zakaz">Заказать</a>
+    <main>
+        <div class="row">
+            <img src="source/MainBG8.svg" class="p-0">
         </div>
-    </nav>
-    <main class="row text-center">
-        <div class="row justify-content-center my-1" id="about">
-            <div class="col-10">
-                <h2 class="h">О нас</h2>
+        <div class="row">
+            <div class="col-1">
+                <object type="image/svg+xml" data="source/icons/fish_icon.svg" class="w-100 interact"></object>
             </div>
-        </div>
-        <div class="row justify-content-center">
-            <!--Поменяем в зависимости от текста-->
-            <div class="col-4 d-flex flex-column justify-content-between p-0 mx-3">
-                <img src="source/AboutUs/AboutUs1.jpg" class="w-100 myRounded mb-3">
-                <img src="source/AboutUs/AboutUs2.jpg" class="w-100 myRounded">
+            <div class="col-1">
+                <object type="image/svg+xml" data="source/icons/turtle_icon.svg" class="w-100 interact"></object>
             </div>
-            <div class="col-6 d-flex flex-column h-100 justify-content-between p-0">
-                <p class="p-2 h-100 d-flex align-items-center myRounded mainTextBlock mb-3">
-                     то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur", и занялся его поисками в классической латинской литературе. В результате он нашёл неоспоримый первоисточник Lorem Ipsum в разделах 1.10.32 и 1.10.33 книги "de Finibus Bonorum et Malorum" ("О пределах добра и зла"), написанной Цицероном в 45 году н.э. Этот трактат по теории этики был очень популярен в эпоху Возрождения. Первая строка Lorem Ipsum, "Lorem ipsum dolor sit amet..", происходит от одной из строк в разделе 1.10.32
-                </p>
-                <img src="source/AboutUs/AboutUs3.jpeg" class="w-100 myRounded">
+            <div class="col-1">
+                <object type="image/svg+xml" data="source/icons/spider_icon.svg" class="w-100 interact"></object>
+            </div>
+            <div class="col-1">
+                <object type="image/svg+xml" data="source/icons/crow_icon.svg" class="w-100 interact"></object>
+            </div>
+            <div class="col-6">
+
+            </div>
+            <div class="col-2">
+
             </div>
         </div>
-        <div class="row justify-content-center" id="tovar">
-            <div class="col-10 my-2">
-                <h2 class="h">Наш товар</h2>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-10 my-1">
-                <div id="carouselExampleIndicators" class="carousel slide bg-dark" data-bs-ride="carousel">
-                    <div class="carousel-indicators m-0">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    </div>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="row justify-content-center">
-                                <div class="card col-2 m-4">
-                                    <img src="source/card/1.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">текст</p>
-                                        <a href="#" class="btn btn-primary">Подробнее</a>
-                                    </div>
-                                </div>
-                                <div class="card col-2 m-4">
-                                    <img src="source/card/2.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">текст</p>
-                                        <a href="#" class="btn btn-primary">Подробнее</a>
-                                    </div>
-                                </div>
-                                <div class="card col-2 m-4">
-                                    <img src="source/card/3.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">текст</p>
-                                        <a href="#" class="btn btn-primary">Подробнее</a>
-                                    </div>
-                                </div>
-                                <div class="card col-2 m-4">
-                                    <img src="source/card/4.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">текст</p>
-                                        <a href="#" class="btn btn-primary">Подробнее</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="card col-2 m-4">
-                                    <img src="source/card/5.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">текст</p>
-                                        <a href="#" class="btn btn-primary">Подробнее</a>
-                                    </div>
-                                </div>
-                                <div class="card col-2 m-4">
-                                    <img src="source/card/6.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">текст</p>
-                                        <a href="#" class="btn btn-primary">Подробнее</a>
-                                    </div>
-                                </div>
-                                <div class="card col-2 m-4">
-                                    <img src="source/card/7.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">текст</p>
-                                        <a href="#" class="btn btn-primary">Подробнее</a>
-                                    </div>
-                                </div>
-                                <div class="card col-2 m-4">
-                                    <img src="source/card/8.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">текст</p>
-                                        <a href="#" class="btn btn-primary">Подробнее</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="row justify-content-center">
-                                <div class="card col-2 m-4">
-                                    <img src="source/card/9.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">текст</p>
-                                        <a href="#" class="btn btn-primary">Подробнее</a>
-                                    </div>
-                                </div>
-                                <div class="card col-2 m-4">
-                                    <img src="source/card/10.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">текст</p>
-                                        <a href="#" class="btn btn-primary">Подробнее</a>
-                                    </div>
-                                </div>
-                                <div class="card col-2 m-4">
-                                    <img src="source/card/11.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">текст</p>
-                                        <a href="#" class="btn btn-primary">Подробнее</a>
-                                    </div>
-                                </div>
-                                <div class="card col-2 m-4">
-                                    <img src="source/card/12.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">текст</p>
-                                        <a href="#" class="btn btn-primary">Подробнее</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="card col-2 m-4">
-                                    <img src="source/card/1.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">текст</p>
-                                        <a href="#" class="btn btn-primary">Подробнее</a>
-                                    </div>
-                                </div>
-                                <div class="card col-2 m-4">
-                                    <img src="source/card/1.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">текст</p>
-                                        <a href="#" class="btn btn-primary">Подробнее</a>
-                                    </div>
-                                </div>
-                                <div class="card col-2 m-4">
-                                    <img src="source/card/1.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">текст</p>
-                                        <a href="#" class="btn btn-primary">Подробнее</a>
-                                    </div>
-                                </div>
-                                <div class="card col-2 m-4">
-                                    <img src="source/card/1.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">текст</p>
-                                        <a href="#" class="btn btn-primary">Подробнее</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev col-1" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Предыдущий</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Следующий</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center" id="zakaz">
-            <div class="col-4 my-5">
-                <button class="bg-info text-white w-100 rounded-5 py-3 border "><h3>Оформить заказ</h3></button>
-            </div>
+        <div class="row">
+
         </div>
     </main>
     <footer class="row justify-content-center">
-        <p class="col-10 mb-5 text-center">
+        <p class="text-center">
             ИП Шипула Юрий Владимирович Действующий на основании св-ва 23 № 001539812 от 11.11.2003г. ОГРНИП № 304230915400047<br>
             ИНН 230905580352 КПП 230901001 Адрес юрид. : 350001, Россия, Краснодарский край, г. Краснодар, ул. 5-ая линия ПРК, д. 64<br>
             р/с 40802810200000000293 в КБ «Кубань Кредит» ООО г. Краснодар к/с 30101810200000000722 БИК 040349722 ОКВЭД 15.72<br>

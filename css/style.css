@@ -1,37 +1,7 @@
-header {
-    background-color: #42AFF8;
+body {
+    background-color: gray;
 }
 
-#logo {
-    max-height: 10vh;
-    max-width: 10vw;
-}
-
-.navlink {
-    color:#42AFF8;
-    text-decoration: none;
-}
-
-.carousel-control-next, .carousel-control-prev {
-    width: 8.33333333%;
-}
-
-.h { 
-    
-    color:#42AFF8;
-}
-
-.mainTextBlock {
-    background-color: #99D6FF;
-    color:#2E7EB3;
-}
-
-.myRounded {
-    border-radius: 1.5em;
-}
-
-.headTitle {
-    font-family: Arial;
-    color:#FFFFFF;
-    -webkit-text-stroke: 1pt #2E7EB3;
+header div img{
+    height: 8vh;
 }
