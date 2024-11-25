@@ -1,7 +1,11 @@
+html{
+    font-size: 0.9rem;
+}
+
 body {
     background-color: gray;
 }
 
 header div img, .panel, .zakaz{
-    height: 8vh;
+    height: 8vmin;
 }

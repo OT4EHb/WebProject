@@ -1,14 +1,11 @@
-//
-function reklama() {
-    let myToastEl = document.getElementById("liveToast");
-    let myToast = bootstrap.Toast.getOrCreateInstance(myToastEl);
-    if (myToast["_element"].classList[2] !== "show") {
-        myToast.show();
-    }
-}
-//
-
 let icons = [];
+
+function find(event) {
+    event.preventDefault();
+    let text = document.querySelector("[type=search]");
+    console.log(text.value);
+}
+
 window.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".interact").forEach(function (i) {
         i.contentWindow.addEventListener("DOMContentLoaded", function () {
@@ -25,15 +22,12 @@ window.addEventListener("DOMContentLoaded", function () {
                 }
                 icons.forEach(function (i) {
                     if (i.classList.value === "selected") {
-                        //фильтрация
+                        //filter
                         ;
                     }
                 });
             });
         });
     });
-
-    //
-    setInterval(reklama, 10000);
-    //
+    document.querySelector(".find").addEventListener("submit", find);
 });
