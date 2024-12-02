@@ -1,35 +1,15 @@
-﻿class Card {
-    constructor (name, opisanie, img, grammArr, priceArr, element) {
-        this.name = name;
-        this.opisanie = opisanie;
-        this.img = img;
-        this.grammArr = grammArr;
-        this.priceArr = priceArr;
-        this.element = element;
-        this.update();
-    }
-
-    update() {
-        this.element.id = this.name;
-        this.element.children[0].src = this.img;
-        console.log(this.element.children[0]);
-        let body = this.element.children[1];
-        body.children[0].innerHTML = this.name;
-        body.children[1].innerHTML = this.opisanie;
-    }
-}
-
-let icons = [];
+﻿let icons = [];
 
 function find(event) {
     event.preventDefault();
     let text = document.querySelector("[type=search]");
-    if (document.getElementById(text.value) !== null) {
-        window.location.href = window.location.pathname + "#" + text.value;
+    if (document.getElementById(text.value.toLowerCase()) !== null) {
+        window.location.href = window.location.pathname + "#" + text.value.toLowerCase();
     }
 }
 
 window.addEventListener("DOMContentLoaded", function () {
+    list = document.getElementById("datalistOptions");
     const card = [
         new Card(
             "Дафния",
@@ -37,42 +17,42 @@ window.addEventListener("DOMContentLoaded", function () {
             "source/card/1.jpg",
             [10, 20],
             [50, 100],
-            document.querySelectorAll(".card")[0]),
+            document.querySelector(".card")),
         new Card(
             "Черная Львинка",
             "текст",
             "source/card/2.jpg",
             [10, 20],
             [50, 100],
-            document.querySelectorAll(".card")[1]),
+            null),
         new Card(
             "Корм3",
             "текст",
             "source/card/3.jpg",
             [10, 20],
             [50, 100],
-            document.querySelectorAll(".card")[2]),
+            null),
         new Card(
             "Корм4",
             "текст",
             "source/card/4.jpg",
             [10, 20],
             [50, 100],
-            document.querySelectorAll(".card")[3]),
+            null),
         new Card(
             "Корм5",
             "текст",
             "source/card/5.jpg",
             [10, 20],
             [50, 100],
-            document.querySelectorAll(".card")[4]),
+            null),
         new Card(
             "Корм6",
             "текст",
             "source/card/6.jpg",
             [10, 20],
             [50, 100],
-            document.querySelectorAll(".card")[5])
+            null)
     ];
 
     document.querySelectorAll(".interact").forEach(function (i) {
