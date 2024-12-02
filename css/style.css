@@ -1,9 +1,9 @@
-html{
-    font-size: 0.9rem;
+﻿html{
+    font-size: 0.95rem;
 }
 
 body {
-    background-color: gray;
+    background-image: url("../source/BG.jpg");
 }
 
 header div img, .panel, .zakaz{
