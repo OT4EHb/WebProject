@@ -1,11 +1,21 @@
 ﻿html{
-    font-size: 0.95rem;
+    font-size: 0.8rem;
 }
 
 body {
     background-image: url("../source/BG.jpg");
 }
 
-header div img, .panel, .zakaz{
+header div img, .panel > *, .zakaz{
     height: 8vmin;
+}
+
+.interact {
+    height: 100%;
+}
+
+@media (min-width: 768px){
+    html {
+        font-size: 0.9rem;
+    }
 }

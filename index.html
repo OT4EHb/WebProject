@@ -25,19 +25,26 @@
             <img src="source/MainBG8.svg" class="p-0">
         </div>
         <div class="row panel my-3">
-            <div class="col-1 h-100 px-1">
-                <object type="image/svg+xml" data="source/icons/fish_icon.svg" class="h-100 interact"></object>
+            <div class="col-2 col-md-1 px-1">
+                <object type="image/svg+xml" data="source/icons/fish_icon.svg" class="interact"></object>
             </div>
-            <div class="col-1 h-100 px-1">
-                <object type="image/svg+xml" data="source/icons/turtle_icon.svg" class="h-100 interact"></object>
+            <div class="col-2 col-md-1 px-1">
+                <object type="image/svg+xml" data="source/icons/turtle_icon.svg" class="interact"></object>
             </div>
-            <div class="col-1 h-100 px-1">
-                <object type="image/svg+xml" data="source/icons/spider_icon.svg" class="h-100 interact"></object>
+            <div class="col-2 col-md-1 px-1">
+                <object type="image/svg+xml" data="source/icons/spider_icon.svg" class="interact"></object>
             </div>
-            <div class="col-1 h-100 px-1">
-                <object type="image/svg+xml" data="source/icons/crow_icon.svg" class="h-100 interact"></object>
+            <div class="col-2 col-md-1 px-1">
+                <object type="image/svg+xml" data="source/icons/crow_icon.svg" class="interact"></object>
             </div>
-            <div class="col-6">
+            <div class="col-4 col-md-2 order-md-1 pe-0">
+                <select class="form-select h-100 bg-primary text-center py-0" aria-label="Default select example">
+                    <option selected value="0">По популярности</option>
+                    <option value="1">По возрастанию</option>
+                    <option value="2">По убыванию</option>
+                </select>
+            </div>
+            <div class="col-12 col-md-6 mt-2 mt-md-0">
                 <form class="d-flex h-100 find">
                     <input class="form-control me-1" type="search" placeholder="Поиск" list="datalistOptions">
                     <datalist id="datalistOptions">
@@ -48,19 +55,12 @@
                     </button>
                 </form>
             </div>
-            <div class="col-2">
-                <select class="form-select h-100 bg-primary text-center" aria-label="Default select example">
-                    <option selected value="0">По популярности</option>
-                    <option value="1">По возрастанию</option>
-                    <option value="2">По убыванию</option>
-                </select>
-            </div>
         </div>
         <div class="row" id="tovar">
             <div class="col-6 col-md-3 py-4 px-md-4">
                 <div class="card border-0">
                     <img src="/" class="card-img-top" alt="...">
-                    <div class="card-body">
+                    <div class="card-body p-0 p-md-2">
                         <h5 class="card-title"></h5>
                         <p class="card-text"></p>
                         <button href="#" class="btn btn-primary w-100">Подробнее</button>
