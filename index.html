@@ -22,7 +22,7 @@
             <img src="source/icons/cart.svg">
         </div>
     </header>
-    <main >
+    <main>
         <div class="row">
             <img src="source/MainBG8.svg" class="p-0">
         </div>
@@ -59,24 +59,50 @@
                     </form>
                 </div>
             </div>
-            <div class="row" id="tovar">
-                <div class="col-6 col-md-3 py-4 px-md-4 rounded-5">
+            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4" id="tovar">
+                <div class="col col py-4 px-md-4">
                     <div class="card border-0">
                         <img src="/" class="card-img-top" alt="...">
                         <div class="card-body p-0 p-md-2">
                             <h5 class="card-title"></h5>
                             <p class="card-text"></p>
-                            <button href="#" class="btn btn-primary w-100">Подробнее</button>
+                            <button class="btn btn-primary w-100" data-bs-target="#detalno" data-bs-toggle="modal">Подробнее</button>
                         </div>
                     </div>
                 </div>
                 <!--добавляется js-->
             </div>
             <div class="row justify-content-center zakaz my-4">
-                <div class="col-8 col-md-4 h-100">
+                <div class="col-10 col-sm-8 col-md-4 h-100">
                     <button class="bg-primary text-white border-0 rounded-5 w-100 h-100">
                         <h3>Оформить заказ</h3>
                     </button>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="detalno" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen-lg-down modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="opisanie"></p>
+                        <div class="container-fluid fs-4">
+                            <div class="row my-2">
+                                <div class="col text-center">
+
+                                </div>
+                                <div class="col text-center">
+
+                                </div>
+                                <button class="btn btn-primary col p-0 mx-2 w-25">Убрать</button>
+                                <p class="col text-center">100</p>
+                                <button class="btn btn-primary col p-0 mx-2 w-25">Добавить</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
