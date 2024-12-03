@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <title>Планктон-ЮГ</title>
@@ -11,6 +12,7 @@
     <script src="js/script.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body class="container-fluid">
     <header class="row my-1">
         <div class="col">
@@ -20,68 +22,76 @@
             <img src="source/icons/cart.svg">
         </div>
     </header>
-    <main>
+    <main >
         <div class="row">
             <img src="source/MainBG8.svg" class="p-0">
         </div>
-        <div class="row panel my-3">
-            <div class="col-2 col-md-1 px-1">
-                <object type="image/svg+xml" data="source/icons/fish_icon.svg" class="interact"></object>
-            </div>
-            <div class="col-2 col-md-1 px-1">
-                <object type="image/svg+xml" data="source/icons/turtle_icon.svg" class="interact"></object>
-            </div>
-            <div class="col-2 col-md-1 px-1">
-                <object type="image/svg+xml" data="source/icons/spider_icon.svg" class="interact"></object>
-            </div>
-            <div class="col-2 col-md-1 px-1">
-                <object type="image/svg+xml" data="source/icons/crow_icon.svg" class="interact"></object>
-            </div>
-            <div class="col-4 col-md-2 order-md-1 pe-0">
-                <select class="form-select h-100 bg-primary text-center py-0" aria-label="Default select example">
-                    <option selected value="0">По популярности</option>
-                    <option value="1">По возрастанию</option>
-                    <option value="2">По убыванию</option>
-                </select>
-            </div>
-            <div class="col-12 col-md-6 mt-2 mt-md-0">
-                <form class="d-flex h-100 find">
-                    <input class="form-control me-1" type="search" placeholder="Поиск" list="datalistOptions">
-                    <datalist id="datalistOptions">
-                        <!--заполняется js-->
-                    </datalist>
-                    <button class="btn btn-info btn-outline-primary" type="submit">
-                        <span>значок</span>
-                    </button>
-                </form>
-            </div>
-        </div>
-        <div class="row" id="tovar">
-            <div class="col-6 col-md-3 py-4 px-md-4">
-                <div class="card border-0">
-                    <img src="/" class="card-img-top" alt="...">
-                    <div class="card-body p-0 p-md-2">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text"></p>
-                        <button href="#" class="btn btn-primary w-100">Подробнее</button>
-                    </div>
+        <div class="col-xl-8 col-lg-10 mx-auto">
+            <div class="row panel my-3">
+                <div class="col-2 col-md-1 px-1">
+                    <object type="image/svg+xml" data="source/icons/fish_icon.svg" class="interact"></object>
+                </div>
+                <div class="col-2 col-md-1 px-1">
+                    <object type="image/svg+xml" data="source/icons/turtle_icon.svg" class="interact"></object>
+                </div>
+                <div class="col-2 col-md-1 px-1">
+                    <object type="image/svg+xml" data="source/icons/spider_icon.svg" class="interact"></object>
+                </div>
+                <div class="col-2 col-md-1 px-1">
+                    <object type="image/svg+xml" data="source/icons/crow_icon.svg" class="interact"></object>
+                </div>
+                <div class="col-4 col-md-2 order-md-1 pe-0">
+                    <select class="form-select h-100 bg-primary text-center py-0" aria-label="Default select example">
+                        <option selected value="0">По популярности</option>
+                        <option value="1">По возрастанию</option>
+                        <option value="2">По убыванию</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-6 mt-2 mt-md-0">
+                    <form class="d-flex h-100 find">
+                        <input class="form-control me-1" type="search" placeholder="Поиск" list="datalistOptions">
+                        <datalist id="datalistOptions">
+                            <!--заполняется js-->
+                        </datalist>
+                        <button class="btn btn-info btn-outline-primary" type="submit">
+                            <span>значок</span>
+                        </button>
+                    </form>
                 </div>
             </div>
-            <!--добавляется js-->
-        </div>
-        <div class="row justify-content-center zakaz my-4">
-            <div class="col-8 col-md-4 h-100">
-                <button class="bg-primary text-white border-0 rounded-5 w-100 h-100"><h3>Оформить заказ</h3></button>
+            <div class="row" id="tovar">
+                <div class="col-6 col-md-3 py-4 px-md-4 rounded-5">
+                    <div class="card border-0">
+                        <img src="/" class="card-img-top" alt="...">
+                        <div class="card-body p-0 p-md-2">
+                            <h5 class="card-title"></h5>
+                            <p class="card-text"></p>
+                            <button href="#" class="btn btn-primary w-100">Подробнее</button>
+                        </div>
+                    </div>
+                </div>
+                <!--добавляется js-->
+            </div>
+            <div class="row justify-content-center zakaz my-4">
+                <div class="col-8 col-md-4 h-100">
+                    <button class="bg-primary text-white border-0 rounded-5 w-100 h-100">
+                        <h3>Оформить заказ</h3>
+                    </button>
+                </div>
             </div>
         </div>
     </main>
     <footer class="row justify-content-center">
         <p class="text-center">
-            ИП Шипула Юрий Владимирович Действующий на основании св-ва 23 № 001539812 от 11.11.2003г. ОГРНИП № 304230915400047<br>
-            ИНН 230905580352 КПП 230901001 Адрес юрид. : 350001, Россия, Краснодарский край, г. Краснодар, ул. 5-ая линия ПРК, д. 64<br>
-            р/с 40802810200000000293 в КБ «Кубань Кредит» ООО г. Краснодар к/с 30101810200000000722 БИК 040349722 ОКВЭД 15.72<br>
+            ИП Шипула Юрий Владимирович Действующий на основании св-ва 23 № 001539812 от 11.11.2003г. ОГРНИП №
+            304230915400047<br>
+            ИНН 230905580352 КПП 230901001 Адрес юрид. : 350001, Россия, Краснодарский край, г. Краснодар, ул. 5-ая
+            линия ПРК, д. 64<br>
+            р/с 40802810200000000293 в КБ «Кубань Кредит» ООО г. Краснодар к/с 30101810200000000722 БИК 040349722 ОКВЭД
+            15.72<br>
             Электронная почта: Shipyla@yandex.ru Тел.: 89184499520, 89186907410
         </p>
     </footer>
 </body>
+
 </html>
