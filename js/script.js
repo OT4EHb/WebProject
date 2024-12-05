@@ -245,7 +245,7 @@ window.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".interact").forEach(function (i) {
         i.contentWindow.addEventListener("DOMContentLoaded", function () {
             let svg = this.document.querySelector("path");
-            icons.push(svg);
+            icons.push(i);
             this.document.addEventListener("click", function () {
                 let path = this.querySelector("path");
                 let list = path.classList;
@@ -255,10 +255,16 @@ window.addEventListener("DOMContentLoaded", function () {
                 } else {
                     path.attributes["fill"].value = "black";
                 }
-                icons.forEach(function (i) {
-                    if (i.classList.value === "selected") {
-                        //filter
-                        ;
+                icons.forEach(function (j) {
+                    if (j.contentDocument.querySelector("path").classList.value === "selected") {
+                        console.log(j.classList[1]);
+                        card.forEach(function(k){
+                            if (k.animalsArr.find(m => m === j.classList[1])) {
+                                k.element.classList.remove("d-none");
+                            } else {
+                                k.element.classList.add("d-none"); 
+                            }
+                        });
                     }
                 });
             });
