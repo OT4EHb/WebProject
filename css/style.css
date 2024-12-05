@@ -2,8 +2,12 @@
     font-size: 0.8rem;
 }
 
-body {
+main {
     background-image: url("../source/BG.jpg");
+}
+
+header {
+    background-image: url("../source/istockphoto-1323709916-640_adpp_is.gif");
 }
 
 header div img, .panel > *, .zakaz{
