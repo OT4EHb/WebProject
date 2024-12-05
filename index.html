@@ -14,100 +14,99 @@
 </head>
 
 <body class="container-fluid p-0">
-    <header class="row">
-        <div class="col">
-            <img src="source/Logo.png">
+    <header>
+        <div class="row head">
+            <div class="col">
+                <img src="source/Logo.png">
+            </div>
+            <div class="col d-flex justify-content-end">
+                <img src="source/icons/cart.svg">
+            </div>
         </div>
-        <div class="col d-flex justify-content-end">
-            <img src="source/icons/cart.svg">
-        </div>
-    </header>
-    <main>
         <div class="row">
             <img src="source/MainBG8.svg" class="p-0">
         </div>
-        <div class="col-xl-8 col-lg-10 mx-auto">
-            <div class="row panel my-3">
-                <div class="col-2 col-md-1 px-1">
-                    <object type="image/svg+xml" data="source/icons/fish_icon.svg" class="interact fish"></object>
-                </div>
-                <div class="col-2 col-md-1 px-1">
-                    <object type="image/svg+xml" data="source/icons/turtle_icon.svg" class="interact turtle"></object>
-                </div>
-                <div class="col-2 col-md-1 px-1">
-                    <object type="image/svg+xml" data="source/icons/spider_icon.svg" class="interact spider"></object>
-                </div>
-                <div class="col-2 col-md-1 px-1">
-                    <object type="image/svg+xml" data="source/icons/crow_icon.svg" class="interact bird"></object>
-                </div>
-                <div class="col-4 col-md-2 order-md-1 pe-0">
-                    <select class="form-select h-100 bg-primary text-center py-0" aria-label="Default select example">
-                        <option selected value="0">По популярности</option>
-                        <option value="1">По возрастанию</option>
-                        <option value="2">По убыванию</option>
-                    </select>
-                </div>
-                <div class="col-12 col-md-6 mt-2 mt-md-0">
-                    <form class="d-flex h-100 find">
-                        <input class="form-control me-1" type="search" placeholder="Поиск" list="datalistOptions">
-                        <datalist id="datalistOptions">
-                            <!--заполняется js-->
-                        </datalist>
-                        <button class="btn btn-info btn-outline-primary" type="submit">
-                            <span>значок</span>
-                        </button>
-                    </form>
-                </div>
+    </header>
+    <main class="col-xl-8 col-lg-10 mx-auto">
+        <div class="row panel my-3">
+            <div class="col-2 col-md-1 px-1">
+                <object type="image/svg+xml" data="source/icons/fish_icon.svg" class="fish"></object>
             </div>
-            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4" id="tovar">
-                <div class="col col py-4 px-md-4">
-                    <div class="card border-0">
-                        <img src="/" class="card-img-top" alt="...">
-                        <div class="card-body p-0 p-md-2">
-                            <h5 class="card-title"></h5>
-                            <p class="card-text"></p>
-                            <button class="btn btn-primary w-100" data-bs-target="#detalno" data-bs-toggle="modal">Подробнее</button>
-                        </div>
-                    </div>
-                </div>
-                <!--добавляется js-->
+            <div class="col-2 col-md-1 px-1">
+                <object type="image/svg+xml" data="source/icons/turtle_icon.svg" class="interact turtle"></object>
             </div>
-            <div class="row justify-content-center zakaz">
-                <div class="col-10 col-sm-8 col-md-4 h-100">
-                    <button class="bg-primary text-white border-0 rounded-5 w-100 h-100">
-                        <h3>Оформить заказ</h3>
+            <div class="col-2 col-md-1 px-1">
+                <object type="image/svg+xml" data="source/icons/spider_icon.svg" class="interact spider"></object>
+            </div>
+            <div class="col-2 col-md-1 px-1">
+                <object type="image/svg+xml" data="source/icons/crow_icon.svg" class="interact bird"></object>
+            </div>
+            <div class="col-4 col-md-2 order-md-1 pe-0">
+                <select class="form-select h-100 bg-primary text-center py-0">
+                    <option selected value="0">По популярности</option>
+                    <option value="1">По возрастанию</option>
+                    <option value="2">По убыванию</option>
+                </select>
+            </div>
+            <div class="col-12 col-md-6 mt-2 mt-md-0">
+                <form class="d-flex h-100 find">
+                    <input class="form-control me-1" type="search" placeholder="Поиск" list="datalistOptions">
+                    <datalist id="datalistOptions">
+                        <!--заполняется js-->
+                    </datalist>
+                    <button class="btn btn-info btn-outline-primary" type="submit">
+                        <span>значок</span>
                     </button>
-                </div>
+                </form>
             </div>
         </div>
-        <br>
-        <div class="modal" id="detalno" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-fullscreen-lg-down modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title"></h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p class="opisanie"></p>
-                        <div class="container-fluid fs-4">
-                            <div class="row my-2">
-                                <div class="col text-center">
-
-                                </div>
-                                <div class="col text-center">
-
-                                </div>
-                                <button class="btn btn-primary col p-0 mx-2 w-25">Убрать</button>
-                                <p class="col text-center">100</p>
-                                <button class="btn btn-primary col p-0 mx-2 w-25">Добавить</button>
-                            </div>
-                        </div>
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4" id="tovar">
+            <div class="col col py-4 px-md-4">
+                <div class="card border-0 h-100 text-center">
+                    <img src="/" class="card-img-top" alt="...">
+                    <div class="card-body p-0 p-md-2 d-flex flex-column justify-content-between">
+                        <h5 class="card-title"></h5>
+                        <a class="btn btn-primary" data-bs-target="#detalno" data-bs-toggle="modal">Подробнее</a>
                     </div>
                 </div>
+            </div>
+            <!--добавляется js-->
+        </div>
+        <div class="row justify-content-center zakaz">
+            <div class="col-10 col-sm-8 col-md-4 h-100">
+                <button class="bg-primary text-white border-0 rounded-5 w-100 h-100">
+                    <h3>Оформить заказ</h3>
+                </button>
             </div>
         </div>
     </main>
+    <br>
+    <div class="modal fade" id="detalno" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-lg-down modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="opisanie"></p>
+                    <div class="container-fluid fs-4">
+                        <div class="row my-2">
+                            <div class="col text-center">
+
+                            </div>
+                            <div class="col text-center">
+
+                            </div>
+                            <button class="btn btn-primary col p-0 mx-2 w-25">Убрать</button>
+                            <p class="col text-center">100</p>
+                            <button class="btn btn-primary col p-0 mx-2 w-25">Добавить</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer class="row justify-content-center">
         <p class="text-center">
             ИП Шипула Юрий Владимирович Действующий на основании св-ва 23 № 001539812 от 11.11.2003г. ОГРНИП №
@@ -119,6 +118,11 @@
             Электронная почта: Shipyla@yandex.ru Тел.: 89184499520, 89186907410
         </p>
     </footer>
+    <!--original video by BaldasaridStock
+    https://ru.freepik.com/free-video/rippled-water-swimming-pool_3543547#fromView=search&page=1&position=8&uuid=643cc66e-d306-462d-87e4-ea62be5264bd
+        -->
+    <video autoplay loop muted playsinline preload="none" class="w-100">
+        <source src="source/water.mp4" type="video/mp4">
+    </video>
 </body>
-
 </html>

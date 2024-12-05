@@ -18,7 +18,7 @@ class Card {
             this.element = element;
         }
         let body = this.element.children[1];
-        body.children[2].addEventListener("click", this.createModal.bind(this));
+        body.children[1].addEventListener("click", this.createModal.bind(this));
         this.update(body);
     }
 
@@ -29,7 +29,6 @@ class Card {
         this.element.id = this.name.toLowerCase();
         this.element.children[0].src = this.img;
         body.children[0].innerHTML = this.name;
-        //body.children[1].innerHTML = this.opisanie;
     }
 
     createModal() {
