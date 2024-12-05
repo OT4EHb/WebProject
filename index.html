@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/bootstrap.bundle.min.js" defer></script>
     <script src="js/Card.js" defer></script>
+    <script src="js/Animal.js" defer></script>
     <script src="js/script.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -29,16 +30,16 @@
         <div class="col-xl-8 col-lg-10 mx-auto">
             <div class="row panel my-3">
                 <div class="col-2 col-md-1 px-1">
-                    <object type="image/svg+xml" data="source/icons/fish_icon.svg" class="interact"></object>
+                    <object type="image/svg+xml" data="source/icons/fish_icon.svg" class="interact fish"></object>
                 </div>
                 <div class="col-2 col-md-1 px-1">
-                    <object type="image/svg+xml" data="source/icons/turtle_icon.svg" class="interact"></object>
+                    <object type="image/svg+xml" data="source/icons/turtle_icon.svg" class="interact turtle"></object>
                 </div>
                 <div class="col-2 col-md-1 px-1">
-                    <object type="image/svg+xml" data="source/icons/spider_icon.svg" class="interact"></object>
+                    <object type="image/svg+xml" data="source/icons/spider_icon.svg" class="interact spider"></object>
                 </div>
                 <div class="col-2 col-md-1 px-1">
-                    <object type="image/svg+xml" data="source/icons/crow_icon.svg" class="interact"></object>
+                    <object type="image/svg+xml" data="source/icons/crow_icon.svg" class="interact bird"></object>
                 </div>
                 <div class="col-4 col-md-2 order-md-1 pe-0">
                     <select class="form-select h-100 bg-primary text-center py-0" aria-label="Default select example">
@@ -72,7 +73,7 @@
                 </div>
                 <!--добавляется js-->
             </div>
-            <div class="row justify-content-center zakaz my-4">
+            <div class="row justify-content-center zakaz">
                 <div class="col-10 col-sm-8 col-md-4 h-100">
                     <button class="bg-primary text-white border-0 rounded-5 w-100 h-100">
                         <h3>Оформить заказ</h3>
@@ -80,6 +81,7 @@
                 </div>
             </div>
         </div>
+        <br>
         <div class="modal" id="detalno" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-fullscreen-lg-down modal-lg">
                 <div class="modal-content">
