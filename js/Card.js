@@ -29,7 +29,7 @@ class Card {
         this.element.id = this.name.toLowerCase();
         this.element.children[0].src = this.img;
         body.children[0].innerHTML = this.name;
-        body.children[1].innerHTML = this.opisanie;
+        //body.children[1].innerHTML = this.opisanie;
     }
 
     createModal() {
