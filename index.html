@@ -19,13 +19,19 @@
             <div class="col">
                 <img src="source/Logo.png">
             </div>
-            <div class="col d-flex justify-content-end">
+            <a class="col d-flex justify-content-end" href="cart">
                 <img src="source/icons/cart.svg">
-            </div>
+            </a>
         </div>
         <div class="row">
             <img src="source/MainBG8.svg" class="p-0">
         </div>
+        <!--original video by BaldasaridStock
+    https://ru.freepik.com/free-video/rippled-water-swimming-pool_3543547#fromView=search&page=1&position=8&uuid=643cc66e-d306-462d-87e4-ea62be5264bd
+        -->
+        <video autoplay loop muted playsinline preload="none" class="w-100">
+            <source src="source/water.mp4" type="video/mp4">
+        </video>
     </header>
     <main class="col-xl-8 col-lg-10 mx-auto">
         <div class="row panel my-3">
@@ -66,7 +72,7 @@
                     <img src="/" class="card-img-top" alt="...">
                     <div class="card-body p-0 p-md-2 d-flex flex-column justify-content-between">
                         <h5 class="card-title"></h5>
-                        <a class="btn btn-primary" data-bs-target="#detalno" data-bs-toggle="modal">Подробнее</a>
+                        <button class="btn btn-primary" data-bs-target="#detalno" data-bs-toggle="modal">Подробнее</button>
                     </div>
                 </div>
             </div>
@@ -74,33 +80,33 @@
         </div>
         <div class="row justify-content-center zakaz">
             <div class="col-10 col-sm-8 col-md-4 h-100">
-                <button class="bg-primary text-white border-0 rounded-5 w-100 h-100">
+                <a class="btn-primary btn border-0 rounded-5 w-100 h-100 text-center p-0" href="cart">
                     <h3>Оформить заказ</h3>
-                </button>
+                </a>
             </div>
         </div>
     </main>
     <br>
-    <div class="modal fade" id="detalno" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="detalno" data-bs-backdrop="static" tabindex="-1">
         <div class="modal-dialog modal-fullscreen-lg-down modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title"></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <p class="opisanie"></p>
-                    <div class="container-fluid fs-4">
+                <div class="modal-body p-0">
+                    <p class="opisanie p-3"></p>
+                    <div class="container-fluid fs-5 p-0">
                         <div class="row my-2">
-                            <div class="col text-center">
+                            <div class="col-2 text-center">
 
                             </div>
-                            <div class="col text-center">
+                            <div class="col-3 text-center">
 
                             </div>
-                            <button class="btn btn-primary col p-0 mx-2 w-25">Убрать</button>
-                            <p class="col text-center">100</p>
-                            <button class="btn btn-primary col p-0 mx-2 w-25">Добавить</button>
+                            <button class="btn btn-primary col p-0">Убрать</button>
+                            <p class="col-3 text-center">0</p>
+                            <button class="btn btn-primary col p-0">Добавить</button>
                         </div>
                     </div>
                 </div>
@@ -118,11 +124,5 @@
             Электронная почта: Shipyla@yandex.ru Тел.: 89184499520, 89186907410
         </p>
     </footer>
-    <!--original video by BaldasaridStock
-    https://ru.freepik.com/free-video/rippled-water-swimming-pool_3543547#fromView=search&page=1&position=8&uuid=643cc66e-d306-462d-87e4-ea62be5264bd
-        -->
-    <video autoplay loop muted playsinline preload="none" class="w-100">
-        <source src="source/water.mp4" type="video/mp4">
-    </video>
 </body>
 </html>

@@ -370,4 +370,14 @@ window.addEventListener("DOMContentLoaded", function () {
     icons.push("fish");
     document.querySelector(".find").addEventListener("submit", find);
     document.querySelector(".form-select").addEventListener("change", sort);
+    document.querySelector("#detalno").addEventListener("hidden.bs.modal", function () {
+        if (history.state !== null) {
+            history.back();
+        }
+    });
+    window.addEventListener("popstate", function () {
+        const elemModal = document.querySelector(".modal");
+        const modal = bootstrap.Modal.getOrCreateInstance(elemModal);
+        modal.hide();
+    });
 });
