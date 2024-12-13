@@ -23,8 +23,9 @@ function sort() {
 }
 
 window.addEventListener("DOMContentLoaded", function () {
-    list = document.getElementById("datalistOptions");
-    const card = [
+    document.body.style.backgroundImage = "url(../source/BG.jpg)";
+    list = document.querySelector("#datalistOptions");
+    const cards = [
         new Card(
             "Дафния",
             `Дафния является естественным природным кормом, необходимым для всех видов рыб. Особенно он незаменим
@@ -338,23 +339,28 @@ window.addEventListener("DOMContentLoaded", function () {
             ["fish"],
             null)
     ];
-
+    for (let i = 0; i < sessionStorage.length; i++) {
+        const key = sessionStorage.key(i);
+        const scard = JSON.parse(sessionStorage.getItem(key));
+        const zcard = cards.find(card => card.name === key);
+        zcard.cartArr = scard.cartArr;
+    }
     document.querySelectorAll(".interact").forEach(function (i) {
         i.contentWindow.addEventListener("DOMContentLoaded", function () {
             let svg = this.document.querySelector("path");
             this.document.addEventListener("click", function () {
                 let path = this.querySelector("path");
-                let list = path.classList;
+                let clist = path.classList;
                 let animal = i.classList[1];
-                list.toggle("selected");
-                if (list.value === "selected") {
+                clist.toggle("selected");
+                if (clist.value === "selected") {
                     path.attributes["fill"].value = "#44AEE8";
                     icons.push(animal);
                 } else {
                     path.attributes["fill"].value = "black";
                     icons.pop(animal);
                 }
-                card.forEach(function (j) {
+                cards.forEach(function (j) {
                     let cardblock = j.element.parentElement;
                     if (icons.every(k=>j.animalsArr.includes(k))) {
                         cardblock.classList.remove("d-none");

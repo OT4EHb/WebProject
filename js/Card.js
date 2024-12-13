@@ -50,18 +50,30 @@ class Card {
 
     fillModal(row, index) {
         row.children[0].textContent = this.grammArr[index] + "гр";
-        row.children[1].textContent = this.priceArr[index] + "руб";   
+        row.children[1].textContent = this.priceArr[index] + "руб";
+        row.children[3].innerHTML = this.cartArr[index];
         row.children[2].addEventListener("click", function () {
             if (this.cartArr[index] > 0) {
                 this.cartArr[index] -= 100;
-                row.children[3].innerHTML = this.cartArr[index];
-                sessionStorage.setItem(this.name, JSON.stringify(this));
+                this.updateRow(row, index);
+                if (this.cartArr.every(x => x === 0)) {
+                    sessionStorage.removeItem(this.name);
+                }
             }
         }.bind(this));
         row.children[4].addEventListener("click", function () {
             this.cartArr[index] += 100;
-            row.children[3].innerHTML = this.cartArr[index];
-            sessionStorage.setItem(this.name, JSON.stringify(this));
+            this.updateRow(row, index);
         }.bind(this));
+    }
+
+    updateRow(row, index) {
+        row.children[3].innerHTML = this.cartArr[index];
+        sessionStorage.setItem(this.name, JSON.stringify(this, function (k, v) {
+            if (!(k === "opisanie" || k === "name" || k === "element" || k === "animalsArr")) {
+                return v;
+            }
+            return undefined;
+        }));
     }
 }
