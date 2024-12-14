@@ -25,13 +25,15 @@
     </header>
     <main class="col-xl-8 col-lg-10 mx-auto">
         <div id="cards">
-            <div class="row">
-                <img src="/" class="col-5 col-md-2 rounded-5">
-                <div class="col-7 col-md-10 bg-primary text-white rounded-5 p-3 fs-5 bodycart">
+            <div class="row my-4">
+                <div class="col-4 col-md-3 d-flex justify-content-center flex-column p-1">
+                    <img src="/" class="rounded-5 w-100">
+                </div>
+                <div class="col-8 col-md-9 bg-primary text-white rounded-5 p-3 fs-5 bodycart">
                     <h3>Название</h3>
                     <div class="row">
-                        <p class="col-2"></p>
-                        <p class="col-2"></p>
+                        <p class="col-4 col-md-3 my-1"></p>
+                        <p class="col-4 col-md-3 my-1"></p>
                     </div>
                 </div>
             </div>
@@ -39,16 +41,21 @@
         <a href="../" class="btn btn-primary my-4 mx-auto d-block" id="evileye">
             <h3 class="mb-0">Вы ничего не заказали,<br>бегом исправляться</h3>
         </a>
-        <h3 class="text-center my-2">Оформите заказ:</h3>
+        <h3 class="bg-danger text-center text-white my-2 rounded-5 d-none nouspex">Не успешно, повторите попытку</h3>
+        <h3 class="text-center my-2 zakaz">Оформите заказ:</h3>
         <form action="/" method="post" class="p-2 bg-primary rounded-5">
             <input placeholder="Название компании" name="Компания" required class="form-control mx-auto my-2">
             <input placeholder="ФИО заказчика" name="Заказчик" required class="form-control mx-auto my-2">
             <input type="tel" placeholder="Номер телефона" name="Телефон" required class="form-control mx-auto my-2">
             <input type="email" placeholder="Электронная почта" name="Email" required class="form-control mx-auto my-2">
             <input type="date" name="Дата" disabled class="form-control mx-auto my-2">
+            <input type="text" name="Текущая стоимость" disabled class="form-control mx-auto my-2">
             <textarea placeholder="Дополнительные пожелания" name="Дополнительно" class="form-control mx-auto my-2"></textarea>
             <input type="submit" value="Отправить" class="btn-success btn d-block my-2 form-control mx-auto" id="buttonSave">
         </form>
+        <a class="btn btn-success my-2 rounded-5 text-center w-100 d-none uspex" href="../">
+            <h3>Спасибо за заказ!<br>С вами свяжутся через email</h3>
+        </a>
     </main>
     <footer class="row justify-content-center mt-5">
         <p class="text-center">

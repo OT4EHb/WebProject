@@ -6,6 +6,9 @@
     const elDate = document.querySelector("input[type=date]");
     elDate.value = new Date().toLocaleDateString("en-CA");
     if (sessionStorage.length == 0) {
+        document.querySelector("form").addEventListener("submit", function (event) {
+            event.preventDefault();
+        });
         return;
     }
     const evileye = document.querySelector("#evileye");
@@ -20,9 +23,58 @@
         newrow.querySelector("h3").innerHTML = key;
         const origrow = newrow.querySelector("div.row");
         const parentrow = origrow.parentElement;
-        const inforow = origrow.cloneNode(true);
-        //parentrow.re
-
+        parentrow.removeChild(origrow);
+        let sumi = 0;
+        for (let j = 0; j < obj.cartArr.length; j++) {
+            sumi += obj.cartArr[j] * obj.priceArr[j];
+            const currentrow = origrow.cloneNode(true);
+            currentrow.children[0].innerHTML = obj.priceArr[j] + "руб";
+            currentrow.children[1].innerHTML = obj.cartArr[j] + "штук";
+            parentrow.appendChild(currentrow);
+        }
+        sum += sumi;
+        origrow.children[0].innerHTML = "Итого: ";
+        origrow.children[1].innerHTML = sumi + "руб";
+        parentrow.appendChild(origrow);
         cards.appendChild(newrow);
     }
+    elDate.nextElementSibling.value = sum + "руб";
+    document.querySelector("form").addEventListener("submit", function (event) {
+        event.preventDefault();
+        const button = this.querySelector(".btn");
+        if (button.disabled) {
+            return;
+        }
+        button.disabled = true;
+        let httpRequest = new XMLHttpRequest();
+        //временный адрес
+        httpRequest.open("POST", "https://formcarry.com/s/77refVsM9Xy");
+        httpRequest.setRequestHeader("Content-Type", "application/json");
+        httpRequest.setRequestHeader("Accept", "application/json");
+        let obj = {};
+        let inputs = document.querySelectorAll("form > *");
+        inputs.forEach(function (i) {
+            if (i.name !== "") {
+                obj[i.name] = i.value;
+            }
+        });
+        httpRequest.send(JSON.stringify(obj));
+        httpRequest.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                const nouspex = document.querySelector(".nouspex");
+                const uspex = document.querySelector(".uspex");
+                if (this.status === 200) {
+                    nouspex.classList.add("d-none");
+                    uspex.classList.remove("d-none");
+                    sessionStorage.clear();
+                    cards.innerHTML = '';
+                    document.querySelector("form").classList.add("d-none");
+                    document.querySelector(".zakaz").classList.add("d-none");
+                } else {
+                    nouspex.classList.remove("d-none");
+                }
+                button.disabled = false;
+            }
+        };
+    });
 });

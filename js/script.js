@@ -9,16 +9,17 @@ function find(event) {
 }
 
 function sort() {
-    const arr = document.querySelector("#tovar").children;
-    console.log(this.value);
-    if (true) {
-        arr.forEach(function (i) {
-            ;
-        });
+    let arr = document.querySelector("#tovar").children;
+    if (this.value === "0") {
+        for (let i of arr) {
+            i.style.order = 0;
+        }
     } else {
-        arr.forEach(function (i) {
-            ;
-        });
+        let j = 0;
+        for (let i of arr) {
+            i.style.order = j;
+            j--;
+        }
     }
 }
 
@@ -212,7 +213,7 @@ window.addEventListener("DOMContentLoaded", function () {
             [10, 250, 500],
             [20, 500, 1000],
             ["fish"],
-            null),
+            null)/*,
         new Card(
             "Рацион",
             `Рацион – это натуральный, незаменимый корм для мальков, состоящий из
@@ -337,7 +338,7 @@ window.addEventListener("DOMContentLoaded", function () {
             [40],
             [24],
             ["fish"],
-            null)
+            null)*/
     ];
     for (let i = 0; i < sessionStorage.length; i++) {
         const key = sessionStorage.key(i);
