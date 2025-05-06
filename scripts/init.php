@@ -8,13 +8,11 @@ function init($request = array(), $urlconf = array()) {
   foreach ($urlconf as $url => $r) {
     $matches = array();
     if ($url == '' || $url[0] != '/') {
-      // Если не регулярное выражение, то поверяем на равенство.
       if ($url != $q) {
         continue;
       }
     }
     else {
-      // Проверяем соответствие URL запроса регулярному выражению.
       if (!preg_match_all($url, $q, $matches)) {
         continue;
       }

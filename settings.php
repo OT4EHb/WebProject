@@ -2,6 +2,8 @@
 define('DISPLAY_ERRORS', 1);
 define('INCLUDE_PATH', './scripts' . PATH_SEPARATOR . './modules');
 $conf = array(
+  'sitename' => 'Планктон-ЮГ',
+  'theme' => './theme',
   'charset' => 'UTF-8',
   'display_errors' => DISPLAY_ERRORS,
   'date_format' => 'd.m.Y',
@@ -13,12 +15,9 @@ $conf = array(
 );
 
 $urlconf = array(
-  '/' => array('module' => 'front'),
+  '' => array('module' => 'front'),
   '/^admin$/' => array('module' => 'admin', 'auth' => 'auth_basic'),
-  '/^admin\/(\d+)$/' => array('module' => 'admin', 'auth' => 'auth_basic'),
-  '/^order\/(\d+)$/' => array('module' => 'order', 'auth' => 'auth_db_basic'),
-  '/^order\/(\d+)\/add$/' => array('module' => 'order_add', 'auth' => 'auth_db_basic'),
-  '/^order\/(\d+)\/add\/(\d+)$/' => array('module' => 'order_add', 'auth' => 'auth_db_basic')
+  '/^cart$/'=>array('module'=>'cart','auth'=>'auth_db'),
 );
 
 header('Cache-Control: no-cache, must-revalidate');
