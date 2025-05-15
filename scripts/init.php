@@ -3,7 +3,13 @@ function init($request = array(), $urlconf = array()) {
   $response = array();
   $template = 'page';
   $c = array();
-  $q = isset($request['url']) ? $request['url'] : '';
+  $q = '';
+  if (conf('clean_urls')){
+      $q = isset($request['url']) ? $request['url'] : '';
+  } else {
+      $q=isset($_GET['q']) ? $_GET['q'] : '';
+  }
+  if ($q=='/') $q='';
   $method = isset($request['method']) ? $request['method'] : 'get';
   foreach ($urlconf as $url => $r) {
     $matches = array();
@@ -43,7 +49,6 @@ function init($request = array(), $urlconf = array()) {
     if (!function_exists($func)) {
       continue;
     }
-
     // Собираем параметры в массив.
     $params = array('request' => $request);
     array_shift($matches);
@@ -132,22 +137,13 @@ function not_found() {
 
 // Функция загрузки шаблона с использованием буферизации вывода.
 function theme($t, $c = array()) {
-  // Путь к файлу шаблона.
   $template = conf('theme') . '/' . str_replace('/', '_', $t) . '.tpl.php';
-
-  // Если нет файла шаблона, то просто печатаем данные слитно.
   if (!file_exists($template)) {
     return implode('', $c);
   }
-
-  // Начинаем буферизацию вывода.
   ob_start();
-  // Парсим и включаем файл шаблона, весь вывод попадает в буфер.
   include $template;
-  // Достаем содержимое буфера.
   $contents = ob_get_contents();
-  // Оканчиваем буферизацию очищая буфер.
   ob_end_clean();
-  // Возвращаем контент.
   return $contents;
 }

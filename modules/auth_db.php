@@ -1,6 +1,8 @@
 <?php
+include('db.php');
+
 function auth(&$request, $r) {
-  $users = array(
+  /*$users = array(
     'admin' => '123',
   );
   if (empty($user) && !empty($_SERVER['PHP_AUTH_USER'])) {
@@ -17,5 +19,5 @@ function auth(&$request, $r) {
       'entity' => theme('401', $request),
     );
     return $response;
-  }
+  }*/
 }

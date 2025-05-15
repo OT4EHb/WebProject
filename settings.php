@@ -6,12 +6,13 @@ $conf = array(
   'theme' => './theme',
   'charset' => 'UTF-8',
   'display_errors' => DISPLAY_ERRORS,
+  'clean_urls' => FALSE,
   'date_format' => 'd.m.Y',
   'basedir' => '/',
   'db_host'=>'localhost',
-  'db_name'=>'dbname',
-  'db_user'=>'user',
-  'db_pass'=>'2As4o5dfe3Fqw2'
+  'db_name'=>'project',
+  'db_user'=>'projecter',
+  'db_pass'=>'projecter'
 );
 
 $urlconf = array(

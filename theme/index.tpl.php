@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js" defer></script>
     <script src="js/Card.js" defer></script>
-    <script src="js/script.js" defer></script>
+    <script src="js/index.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -22,7 +22,7 @@
             <div class="col">
                 <img src="source/Logo.png">
             </div>
-            <a class="col d-flex justify-content-end" href="cart">
+            <a class="col d-flex justify-content-end" href=<?php print(conf('clean_urls')?'cart':'?q=cart')?>>
                 <img src="source/icons/cart.svg">
             </a>
         </div>
@@ -82,7 +82,8 @@
         </div>
         <div class="row justify-content-center zakaz">
             <div class="col-10 col-sm-8 col-md-4 h-100">
-                <a class="btn-primary btn border-0 rounded-5 w-100 h-100 text-center p-0" href="cart">
+                <a class="btn-primary btn border-0 rounded-5 w-100 h-100 text-center p-0" href=<?php 
+                    print(conf('clean_urls')?'cart':'?q=cart')?>>
                     <h3>Оформить заказ</h3>
                 </a>
             </div>
