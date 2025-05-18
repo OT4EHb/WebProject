@@ -5,7 +5,7 @@ $db = new PDO('mysql:host=' . conf('db_host') . ';dbname=' . conf('db_name'), co
   array(PDO::MYSQL_ATTR_FOUND_ROWS => true, PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
 
 function db_row($stmt) {
-  return $stmt->fetch(PDO::FETCH_ASSOC);
+  return $stmt->fetch(PDO::FETCH_NUM);
 }
 
 function db_error() {
@@ -20,13 +20,8 @@ function db_query($query) {
   array_shift($args);
   $res = $q->execute($args);
   if ($res) {
-    while ($row = db_row($res)) {
-      if (isset($row['id']) && !isset($r[$row['id']])) {
-        $r[$row['id']] = $row;
-      }
-      else {
-        $r[] = $row;
-      }
+    while ($row = db_row($q)) {
+        $r[$row[0]] = $row;
     }
   }
   return $r;
@@ -39,7 +34,7 @@ function db_result($query) {
   array_shift($args);
   $res = $q->execute($args);
   if ($res) {
-    if ($row = db_row($res)) {
+    if ($row = db_row($q)) {
       return $row[0];
     }
     else {

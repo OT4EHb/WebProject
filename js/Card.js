@@ -31,49 +31,4 @@ class Card {
         body.children[0].innerHTML = this.name;
     }
 
-    createModal() {
-        let detalno = document.getElementById("detalno");
-        detalno.querySelector(".modal-title").textContent = this.name;
-        detalno.querySelector(".opisanie").textContent = this.opisanie;
-        let container = detalno.querySelector(".container-fluid");
-        let row = container.children[0].cloneNode(true);
-        container.textContent = '';
-        container.appendChild(row);
-        this.fillModal(row, 0);        
-        for (let i = 1; i < this.grammArr.length; i++) {            
-            let newrow = row.cloneNode(true);
-            container.appendChild(newrow);
-            this.fillModal(newrow, i);
-        }
-        window.history.pushState({ modal: "true" }, "", "#" + this.name);
-    }
-
-    fillModal(row, index) {
-        row.children[0].textContent = this.grammArr[index] + "гр";
-        row.children[1].textContent = this.priceArr[index] + "руб";
-        row.children[3].innerHTML = this.cartArr[index];
-        row.children[2].addEventListener("click", function () {
-            if (this.cartArr[index] > 0) {
-                this.cartArr[index] -= 100;
-                this.updateRow(row, index);
-                if (this.cartArr.every(x => x === 0)) {
-                    sessionStorage.removeItem(this.name);
-                }
-            }
-        }.bind(this));
-        row.children[4].addEventListener("click", function () {
-            this.cartArr[index] += 100;
-            this.updateRow(row, index);
-        }.bind(this));
-    }
-
-    updateRow(row, index) {
-        row.children[3].innerHTML = this.cartArr[index];
-        sessionStorage.setItem(this.name, JSON.stringify(this, function (k, v) {
-            if (!(k === "opisanie" || k === "name" || k === "element" || k === "animalsArr")) {
-                return v;
-            }
-            return undefined;
-        }));
-    }
 }

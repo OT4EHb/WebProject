@@ -60,7 +60,8 @@
                 <form class="d-flex h-100 find justify-content-center">
                     <input class="form-control me-1" type="search" placeholder="Поиск" list="datalistOptions">
                     <datalist id="datalistOptions">
-                        <!--заполняется js-->
+                        <?php foreach($c as $k)
+                            print("<option>".$k[1]."</option>")?>
                     </datalist>
                     <button class="btn btn-info btn-outline-primary p-1 p-md-2" type="submit">
                         <img src="source/icons/search.svg" class="h-100">
@@ -69,16 +70,22 @@
             </div>
         </div>
         <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4" id="tovar">
+            <?php foreach($c as $k){?>
             <div class="col py-4 px-md-4">
-                <div class="card border-0 h-100 text-center">
-                    <img src="/" class="card-img-top" alt="...">
+                <div class="card border-0 h-100 text-center<?php foreach(explode(", ",$k[4]) as $cl)
+                        print(' '.$cl); ?>" id="<?php print($k[1])?>">
+                    <img src="<?php print($k[3])?>" class="card-img-top" alt="...">
                     <div class="card-body p-0 p-md-2 d-flex flex-column justify-content-between">
-                        <h5 class="card-title"></h5>
+                        <h5 class="card-title"><?php print($k[1])?></h5>
                         <button class="btn btn-primary" data-bs-target="#detalno" data-bs-toggle="modal">Подробнее</button>
+                    </div>
+                    <div class="d-none">
+                        <?php print('<span>'.$k[2].'</span>'.
+                            '<span>'.$k[5].'</span>')?>
                     </div>
                 </div>
             </div>
-            <!--добавляется js-->
+            <?php } ?>
         </div>
         <div class="row justify-content-center zakaz">
             <div class="col-10 col-sm-8 col-md-4 h-100">
