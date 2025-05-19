@@ -28,4 +28,37 @@ CREATE OR REPLACE TABLE card_info(
 	FOREIGN KEY (card_id) REFERENCES cards (card_id),
 	PRIMARY KEY (card_id,card_gramm)
 ) ENGINE = INNODB;
+CREATE OR REPLACE TABLE users(
+	user_id MEDIUMINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	username VARCHAR(30) NOT NULL,
+	pass VARCHAR(256) NOT NULL
+) ENGINE = INNODB;
+CREATE OR REPLACE TABLE orders(
+	order_id MEDIUMINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	user_id MEDIUMINT UNSIGNED,
+	company VARCHAR(30) NOT NULL,
+	FIO VARCHAR(50) NOT NULL,
+	tel VARCHAR(20) NOT NULL,
+	email VARCHAR(20) NOT NULL,
+	order_date DATE NOT NULL,
+	descript TEXT NOT NULL,
+	FOREIGN KEY (user_id) REFERENCES users (user_id)
+) ENGINE = INNODB;
+CREATE OR REPLACE TABLE order_card(
+	ordercard_id MEDIUMINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	order_id MEDIUMINT UNSIGNED,
+	card_id MEDIUMINT UNSIGNED,
+	FOREIGN KEY (order_id) REFERENCES orders (order_id),
+	FOREIGN KEY (card_id) REFERENCES cards (card_id)
+) ENGINE = INNODB;
+CREATE OR REPLACE TABLE order_card(
+	order_id MEDIUMINT UNSIGNED,
+	card_id MEDIUMINT UNSIGNED,
+	card_gramm SMALLINT UNSIGNED,
+	size BIGINT UNSIGNED NOT NULL,
+	FOREIGN KEY (order_id) REFERENCES orders (order_id),
+	FOREIGN KEY (card_id, card_gramm) 
+		REFERENCES card_info (card_id, card_gramm),
+	PRIMARY KEY (order_id, card_id, card_gramm)
+) ENGINE = INNODB;
 SET foreign_key_checks = 1;

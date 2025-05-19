@@ -18,7 +18,7 @@ $conf = array(
 $urlconf = array(
   '' => array('module' => 'front'),
   '/^admin$/' => array('module' => 'admin', 'auth' => 'auth_basic'),
-  '/^cart$/'=>array('module'=>'cart','auth'=>'auth_db'),
+  '/^cart$/'=>array('module'=>'cart', 'auth'=>'auth_db'),
 );
 
 header('Cache-Control: no-cache, must-revalidate');

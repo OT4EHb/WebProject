@@ -1,6 +1,10 @@
 ﻿let icons = [];
 let Cart = {};
 
+function update(name) {
+    sessionStorage.setItem(name, JSON.stringify(Cart[name]));
+}
+
 function createModal() {
     let detalno = document.getElementById("detalno");
     const info = this.parentElement.nextElementSibling;
@@ -14,36 +18,39 @@ function createModal() {
     container.appendChild(row);
     let arr = info.children[1].textContent.split(', ');
     let erst = arr[0].split(':');
-    let name = this.previousElementSibling.textContent;
-    fillModal(row, Number(erst[0]), Number(erst[1]), name);
+    let id = this.parentElement.parentElement.parentElement.id;
+    fillModal(row, Number(erst[0]), Number(erst[1]), id);
     for (let i = 1; i < arr.length; i++) {
         let newrow = row.cloneNode(true);
         container.appendChild(newrow);
         erst = arr[i].split(':');
-        fillModal(newrow, Number(erst[0]), Number(erst[1]), name);
+        fillModal(newrow, Number(erst[0]), Number(erst[1]), id);
     }
+    let name = this.previousElementSibling.textContent;
     window.history.pushState({ modal: "true" }, "", "#" + name);
 }
 
 function fillModal(row, gramm, price, name) {
     if (Cart[name] == null) Cart[name] = {};
     if (Cart[name][gramm] == null)
-        Cart[name][gramm] = 0;
+        Cart[name][gramm] = [price, 0];
     row.children[0].textContent = gramm + "гр";
     row.children[1].textContent = price + "руб";
-    row.children[3].innerHTML = Cart[name][gramm];
+    row.children[3].innerHTML = Cart[name][gramm][1];
     row.children[2].addEventListener("click", function () {
-        if (Cart[name][gramm] > 0) {
-            Cart[name][gramm] -= 100;
-            row.children[3].innerHTML = Cart[name][gramm];
-            if (Cart[name].every(x => x === 0)) {
+        if (Cart[name][gramm][1] > 0) {
+            Cart[name][gramm][1] -= 100;
+            row.children[3].innerHTML = Cart[name][gramm][1];
+            update(name);
+            if (Object.keys(Cart[name]).every(x => Cart[name][x][1] === 0 )) {
                 sessionStorage.removeItem(name);
             }
         }
     });
     row.children[4].addEventListener("click", function () {
-        Cart[name][gramm] += 100;
-        row.children[3].innerHTML = Cart[name][gramm];
+        Cart[name][gramm][1] += 100;
+        update(name);
+        row.children[3].innerHTML = Cart[name][gramm][1];
     });
 }
 
@@ -80,12 +87,11 @@ window.addEventListener("DOMContentLoaded", function () {
     cards.forEach(i => {
         i.children[1].children[1].addEventListener('click', createModal);
     });
-    //for (let i = 0; i < sessionStorage.length; i++) {
-    //    const key = sessionStorage.key(i);
-    //    const scard = JSON.parse(sessionStorage.getItem(key));
-    //    const zcard = cards.find(card => card.name === key);
-    //    zcard.cartArr = scard.cartArr;
-    //}
+    for (let i = 0; i < sessionStorage.length; i++) {
+        const key = sessionStorage.key(i);
+        const scard = JSON.parse(sessionStorage.getItem(key));
+        Cart[key] = scard;
+    }
     document.querySelectorAll(".interact").forEach(function (i) {
         i.contentWindow.addEventListener("DOMContentLoaded", function () {
             let svg = this.document.querySelector("path");

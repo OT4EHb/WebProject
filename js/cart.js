@@ -1,4 +1,8 @@
-﻿window.addEventListener("DOMContentLoaded", function () {
+﻿let Cart = {
+    cards: {}
+};
+
+window.addEventListener("DOMContentLoaded", function () {
     document.body.style.backgroundImage = "url(../source/BG.jpg)";
     const cards = document.querySelector("#cards");
     const row = cards.children[0].cloneNode(true);
@@ -17,19 +21,21 @@
     let sum = 0;
     for (let i = 0; i < sessionStorage.length; i++) {
         let key = sessionStorage.key(i);
+        Cart.cards[key] = [];
         let obj = JSON.parse(sessionStorage.getItem(key));
         let newrow = row.cloneNode(true);
-        newrow.querySelector("img").src = "../" + obj.img;
-        newrow.querySelector("h3").innerHTML = key;
+        newrow.querySelector("img").src = "/source/card/" + key+".jpg";
         const origrow = newrow.querySelector("div.row");
         const parentrow = origrow.parentElement;
         parentrow.removeChild(origrow);
         let sumi = 0;
-        for (let j = 0; j < obj.cartArr.length; j++) {
-            sumi += obj.cartArr[j] * obj.priceArr[j];
+        for (let j in obj) {
+            let erst = obj[j];
+            Cart.cards[key].push([j, erst[1]]);
+            sumi += erst[0] * erst[1];
             const currentrow = origrow.cloneNode(true);
-            currentrow.children[0].innerHTML = obj.priceArr[j] + "руб";
-            currentrow.children[1].innerHTML = obj.cartArr[j] + "штук";
+            currentrow.children[0].innerHTML = erst[0] + "руб";
+            currentrow.children[1].innerHTML = erst[1] + "штук";
             parentrow.appendChild(currentrow);
         }
         sum += sumi;
@@ -48,17 +54,18 @@
         button.disabled = true;
         let httpRequest = new XMLHttpRequest();
         //временный адрес
-        httpRequest.open("POST", "https://formcarry.com/s/77refVsM9Xy");
+        httpRequest.open("POST", "/?q=cart");
         httpRequest.setRequestHeader("Content-Type", "application/json");
         httpRequest.setRequestHeader("Accept", "application/json");
-        let obj = {};
         let inputs = document.querySelectorAll("form > *");
         inputs.forEach(function (i) {
             if (i.name !== "") {
-                obj[i.name] = i.value;
+                Cart[i.name] = i.value;
             }
         });
-        httpRequest.send(JSON.stringify(obj));
+        httpRequest.send(JSON.stringify(Cart));
+        console.log(Cart);
+        
         httpRequest.onreadystatechange = function () {
             if (this.readyState === 4) {
                 const nouspex = document.querySelector(".nouspex");

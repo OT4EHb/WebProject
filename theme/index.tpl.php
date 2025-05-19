@@ -11,7 +11,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js" defer></script>
-    <script src="js/Card.js" defer></script>
     <script src="js/index.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -71,7 +70,7 @@
         </div>
         <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4" id="tovar">
             <?php foreach($c as $k){?>
-            <div class="col py-4 px-md-4">
+            <div class="col py-4 px-md-4" id="<?php echo $k[0] ?>">
                 <div class="card border-0 h-100 text-center<?php foreach(explode(", ",$k[4]) as $cl)
                         print(' '.$cl); ?>" id="<?php print($k[1])?>">
                     <img src="<?php print($k[3])?>" class="card-img-top" alt="...">
