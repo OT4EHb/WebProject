@@ -16,9 +16,10 @@ $conf = array(
 );
 
 $urlconf = array(
-  '' => array('module' => 'front'),
-  '/^admin$/' => array('module' => 'admin', 'auth' => 'auth_basic'),
-  '/^cart$/'=>array('module'=>'cart', 'auth'=>'auth_db'),
+  '' => array('module' => 'front', 'auth'=>'user'),
+  '/^cart$/'=>array('module'=>'cart', 'auth'=>'user'),
+  '/^login$/'=>array('module'=>'login', 'auth'=>'user'),  
+  '/^register/'=>array('module'=>'register', 'auth'=>'user'),
 );
 
 header('Cache-Control: no-cache, must-revalidate');

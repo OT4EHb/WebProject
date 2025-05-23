@@ -2,7 +2,7 @@
 let Cart = {};
 
 function update(name) {
-    sessionStorage.setItem(name, JSON.stringify(Cart[name]));
+    document.cookie = 'card=' + JSON.stringify(Cart);
 }
 
 function createModal() {
@@ -41,10 +41,10 @@ function fillModal(row, gramm, price, name) {
         if (Cart[name][gramm][1] > 0) {
             Cart[name][gramm][1] -= 100;
             row.children[3].innerHTML = Cart[name][gramm][1];
-            update(name);
             if (Object.keys(Cart[name]).every(x => Cart[name][x][1] === 0 )) {
-                sessionStorage.removeItem(name);
+                delete Cart[name];
             }
+            update(name);
         }
     });
     row.children[4].addEventListener("click", function () {
@@ -59,7 +59,6 @@ function find(event) {
     let text = document.querySelector("[type=search]");
     let id = text.value.toLowerCase();
     id = id.charAt(0).toUpperCase() + id.slice(1);
-    console.log(document.getElementById(id));
     if (document.getElementById(id) !== null) {
         window.location.href = window.location.pathname + "#" + id;
     }
@@ -87,11 +86,15 @@ window.addEventListener("DOMContentLoaded", function () {
     cards.forEach(i => {
         i.children[1].children[1].addEventListener('click', createModal);
     });
-    for (let i = 0; i < sessionStorage.length; i++) {
-        const key = sessionStorage.key(i);
-        const scard = JSON.parse(sessionStorage.getItem(key));
-        Cart[key] = scard;
-    }
+    let cookie = document.cookie.split('; ')
+        .map(v => v.split('='))
+        .reduce((acc, v) => {
+            acc[v[0]] = v[1];
+            return acc;
+        });
+    Cart = cookie['card'] == null ? {}
+        : JSON.parse(cookie['card']);
+    if (Cart == null) Cart = {};
     document.querySelectorAll(".interact").forEach(function (i) {
         i.contentWindow.addEventListener("DOMContentLoaded", function () {
             let svg = this.document.querySelector("path");
@@ -105,7 +108,7 @@ window.addEventListener("DOMContentLoaded", function () {
                     icons.push(animal);
                 } else {
                     path.attributes["fill"].value = "black";
-                    icons.pop(animal);
+                    icons.splice(icons.indexOf(animal), 1);
                 }
                 cards.forEach(function (j) {
                     let cardblock = j;

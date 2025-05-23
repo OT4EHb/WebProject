@@ -1,20 +1,23 @@
 ﻿window.addEventListener("DOMContentLoaded", function () {
     document.body.style.backgroundImage = "url(../source/BG.jpg)";
-    const cards = document.querySelector("#cards").children;
-    const elDate = document.querySelector("input[type=date]");
-    elDate.value = new Date().toLocaleDateString("en-CA");
-    let sum = 0;
-    for (let i = 0; i < cards.length;i++) {
-        let obj = cards[i].children[1].children;
-        let sumi = 0;
-        for (let j = 0; j < obj.length; j++) {
-            let erst = obj[j].children;
-            sumi += Number(erst[1].textContent.split(' ')[0])
-                * Number(erst[2].textContent.split(' ')[0]);
-        }
-        sum += sumi;
-    }
-    elDate.nextElementSibling.value = sum + " руб";
+    document.querySelector('#reg').addEventListener('click', e => {
+        e.preventDefault();
+        let response = fetch('/?q=register', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        });
+        response.then(async r => {
+            let info = document.querySelector('#info');
+            let data = await r.json();
+            info.innerHTML = "Ваш логин: " + data['login'] +
+                "<br>Ваш пароль: " + data['password'];
+            info.classList.remove('d-none');
+            console.log(data);
+        });
+    });
     document.querySelector("form").addEventListener("submit", function (event) {
         event.preventDefault();
         const button = this.querySelector(".btn");

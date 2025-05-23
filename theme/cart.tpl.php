@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Корзина-ЮГ</title>
-    <link rel="icon" href="../source/Logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="/source/Logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -15,31 +15,42 @@
 <body class="container-fluid p-0">
     <header>
         <div class="row head">
-            <div class="col">
-                <img src="../source/Logo.png">
-            </div>
-            <a class="col d-flex justify-content-end" href="../">
-                <img src="../source/icons/house-door.svg">
+            <div class="col-1">
+                <img src="/source/Logo.png">
+            </div>            
+            <a class="col d-flex justify-content-end text-dark text-decoration-none" href=<?php print(conf('clean_urls')?'login':'?q=login')?>>
+                <h2>Войти</h2>
+            </a>
+            <a class="col-1 d-flex justify-content-end" href="../">
+                <img src="/source/icons/house-door.svg">
             </a>
         </div>
     </header>
     <main class="col-xl-8 col-lg-10 mx-auto">
         <div id="cards">
+            <?php $cards=json_decode($_COOKIE['card'], true);
+                if (empty($cards)){ ?>                    
+                <a href="/" class="btn btn-primary my-4 mx-auto d-block" id="evileye">
+                    <h3 class="mb-0">Вы ничего не заказали,<br>бегом исправляться</h3>
+                </a>
+                <?php }
+                else foreach($cards as $k => $v){ ?>
             <div class="row my-4">
                 <div class="col-4 col-md-3 d-flex justify-content-center flex-column p-1">
-                    <img src="/" class="rounded-5 w-100">
+                    <img src="/source/card/<?php print($k)?>.jpeg" class="rounded-5 w-100">
                 </div>
                 <div class="col-8 col-md-9 bg-primary text-white rounded-5 p-3 fs-5 bodycart">
+                    <?php foreach($v as $pr=>$arr){?>
                     <div class="row">
-                        <p class="col-4 col-md-3 my-1"></p>
-                        <p class="col-4 col-md-3 my-1"></p>
+                        <p class="col-4 col-md-3 my-1"><?php print($pr.' грамм')?></p>
+                        <p class="col-4 col-md-3 my-1"><?php print($arr[0].' руб')?></p>
+                        <p class="col-4 col-md-3 my-1"><?php print($arr[1].' штук')?></p>
                     </div>
+                    <?php }?>
                 </div>
             </div>
+            <?php }?>
         </div>
-        <a href="../" class="btn btn-primary my-4 mx-auto d-block" id="evileye">
-            <h3 class="mb-0">Вы ничего не заказали,<br>бегом исправляться</h3>
-        </a>
         <h3 class="bg-danger text-center text-white my-2 rounded-5 d-none nouspex">Не успешно, повторите попытку</h3>
         <h3 class="text-center my-2 zakaz">Оформите заказ (Итоговая стоимость может отличаться):</h3>
         <form action="/" method="post" class="p-2 bg-primary rounded-5">

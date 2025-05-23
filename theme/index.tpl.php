@@ -18,10 +18,13 @@
 <body class="container-fluid p-0">
     <header>
         <div class="row head">
-            <div class="col">
+            <div class="col-1">
                 <img src="source/Logo.png">
             </div>
-            <a class="col d-flex justify-content-end" href=<?php print(conf('clean_urls')?'cart':'?q=cart')?>>
+            <a class="col d-flex justify-content-end text-dark text-decoration-none" href=<?php print(conf('clean_urls')?'login':'?q=login')?>>
+                <h2>Войти</h2>
+            </a>
+            <a class="col-1 d-flex justify-content-end" href=<?php print(conf('clean_urls')?'cart':'?q=cart')?>>
                 <img src="source/icons/cart.svg">
             </a>
         </div>

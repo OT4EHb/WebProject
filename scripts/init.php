@@ -27,11 +27,7 @@ function init($request = array(), $urlconf = array()) {
     // Аутентификация и инициализация $request['user'].
     if (isset($r['auth'])) {
       require_once($r['auth'] . '.php');
-      $auth = auth($request, $r);
-      if ($auth) {
-        // Аутентификация вернула заголовки 401.
-        return $auth;
-      }
+      $request['user'] = auth($request, $r);
     }
 
     // Шаблон всей страницы можно перекрыть для обрабатываемого ресурса в $urlconf.
@@ -55,7 +51,6 @@ function init($request = array(), $urlconf = array()) {
     foreach ($matches as $key => $match) {
       $params[$key] = $match[0];
     }
-
     // Вызываем обработчик запроса в модуле передавая параметры из $params.
     if ($result = call_user_func_array($func, $params)) {
       if (is_array($result)) {
@@ -133,6 +128,13 @@ function not_found() {
     'headers' => array('HTTP/1.1 404 Not Found'),
     'entity' => theme('404'),
   );
+}
+
+function bad_request($res) {
+    return array(
+        'headers'=>array('HTTP/1.1 400 Bad Request'),
+        'entity' => $res,
+    );
 }
 
 // Функция загрузки шаблона с использованием буферизации вывода.
