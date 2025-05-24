@@ -1,7 +1,7 @@
 <?php
 function front_get($request) {
     require_once('db.php');
-    $c=db_query("SELECT c.*,
+    $request['data']=db_query("SELECT c.*,
         GROUP_CONCAT(DISTINCT a.animal_name SEPARATOR ', ') AS `animals`,
         GROUP_CONCAT(DISTINCT CONCAT(ci.card_gramm,':',ci.card_price)
         SEPARATOR ', ') AS grice
@@ -13,7 +13,7 @@ function front_get($request) {
     );
     return array(
     'headers' => array('HTTP/1.1 200 OK'),
-    'entity' => theme('index',$c),
+    'entity' => theme('index',$request),
   );
 }
 

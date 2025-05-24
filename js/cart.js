@@ -40,22 +40,26 @@
         const nouspex = document.querySelector(".nouspex");
         const uspex = document.querySelector(".uspex");
         response.then(async r => {
-            if (r.ok) {
-                nouspex.classList.add("d-none");
-                uspex.classList.remove("d-none");
-                sessionStorage.clear();
-                cards.innerHTML = '';
-                document.querySelector("form").classList.add("d-none");
-                document.querySelector(".zakaz").classList.add("d-none");
-            } else {
-                nouspex.classList.remove("d-none");
-                nouspex.textContent = '';
-                let res = await r.json();
-                for (let i in res) {
-                    nouspex.innerHTML += res[i] + '<br>';
+            try {
+                if (r.ok) {
+                    nouspex.classList.add("d-none");
+                    uspex.classList.remove("d-none");
+                    sessionStorage.clear();
+                    cards.innerHTML = '';
+                    document.querySelector("form").classList.add("d-none");
+                    document.querySelector(".zakaz").classList.add("d-none");
+                } else {
+                    nouspex.classList.remove("d-none");
+                    nouspex.textContent = '';
+                    let res = await r.json();
+                    for (let i in res) {
+                        nouspex.innerHTML += res[i] + '<br>';
+                    }
                 }
             }
-            button.disabled = false;
+            finally {
+                button.disabled = false;
+            }
         });
     });
 });

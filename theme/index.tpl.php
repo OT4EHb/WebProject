@@ -21,10 +21,15 @@
             <div class="col-1">
                 <img src="source/Logo.png">
             </div>
+            <?php 
+            $col='col';
+            if (empty($c['user'])){
+                $col='col-1'; ?>
             <a class="col d-flex justify-content-end text-dark text-decoration-none" href=<?php print(conf('clean_urls')?'login':'?q=login')?>>
                 <h2>Войти</h2>
             </a>
-            <a class="col-1 d-flex justify-content-end" href=<?php print(conf('clean_urls')?'cart':'?q=cart')?>>
+            <?php }?>
+            <a class="<?php echo $col;?> d-flex justify-content-end" href=<?php print(conf('clean_urls')?'cart':'?q=cart')?>>
                 <img src="source/icons/cart.svg">
             </a>
         </div>
@@ -72,7 +77,7 @@
             </div>
         </div>
         <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4" id="tovar">
-            <?php foreach($c as $k){?>
+            <?php foreach($c['data'] as $k){?>
             <div class="col py-4 px-md-4" id="<?php echo $k[0] ?>">
                 <div class="card border-0 h-100 text-center<?php foreach(explode(", ",$k[4]) as $cl)
                         print(' '.$cl); ?>" id="<?php print($k[1])?>">

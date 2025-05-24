@@ -17,18 +17,26 @@
         <div class="row head">
             <div class="col-1">
                 <img src="/source/Logo.png">
-            </div>            
+            </div>
+            <?php 
+            $col='col';
+            if (empty($c['user'])){
+                $col='col-1'; ?>
             <a class="col d-flex justify-content-end text-dark text-decoration-none" href=<?php print(conf('clean_urls')?'login':'?q=login')?>>
                 <h2>Войти</h2>
             </a>
-            <a class="col-1 d-flex justify-content-end" href="../">
+            <?php }?>
+            <a class="<?php echo $col;?> d-flex justify-content-end" href="/">
                 <img src="/source/icons/house-door.svg">
             </a>
         </div>
     </header>
     <main class="col-xl-8 col-lg-10 mx-auto">
         <div id="cards">
-            <?php $cards=json_decode($_COOKIE['card'], true);
+            <?php 
+                require_once("cards.php");
+                getCards($c);
+                $cards=$c['card'];
                 if (empty($cards)){ ?>                    
                 <a href="/" class="btn btn-primary my-4 mx-auto d-block" id="evileye">
                     <h3 class="mb-0">Вы ничего не заказали,<br>бегом исправляться</h3>

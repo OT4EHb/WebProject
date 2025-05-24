@@ -10,19 +10,14 @@ function randomPassword($length = 12) {
     return $pass;
 }
 
-function register_get($request) {
-    if($request['user'])    
-        return redirect('/');
-    require_once('db.php');
+function register() {
     $c=db_query("SELECT 'id',MAX(user_id) FROM users")['id'][1];
-    $data['login']="user".($c?$c:0);
+    $data['id']=$c?$c:0;
+    $data['login']="user".$data['id'];
     $data['password']=randomPassword();
     db_set('users',
         ['username'=>$data['login'],
         'pass'=>password_hash($data['password'],PASSWORD_DEFAULT)]);
-    return array(
-        'headers' => array('HTTP/1.1 200 OK'),
-        'entity' => json_encode($data),
-    );
+    return $data;
 }
 ?>

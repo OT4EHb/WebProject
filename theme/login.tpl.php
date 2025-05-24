@@ -42,9 +42,7 @@
                 <input type="password" name="pass" required class="form-control req w-100">
             </label>
             <div class="form-control d-flex bg-info w-100">
-                <a href="<?php print(conf('clean_urls')?'register':'?q=register')?>" id="reg"
-                class="btn-secondary btn m-1 w-50">Зарегестрироваться</a>
-                <input type="submit" value="Войти" class="btn-success btn m-1 w-50">
+                <input type="submit" value="Войти" class="btn-success btn m-1 w-100">
             </div>
         </form>
     </main>
