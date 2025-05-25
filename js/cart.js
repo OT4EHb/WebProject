@@ -41,9 +41,14 @@
         const uspex = document.querySelector(".uspex");
         response.then(async r => {
             try {
+                let res = await r.json();
                 if (r.ok) {
                     nouspex.classList.add("d-none");
                     uspex.classList.remove("d-none");
+                    uspex.innerHTML = "<h3>Спасибо за заказ! " + (res.auth == null ? '' : "Стоимость составила: " + res.cost +
+                        "руб<br>Вы можете изменить данные формы:" +
+                        "<br>Ваш логин: " + res.auth.login + "<br>Ваш пароль: " + res.auth.password)
+                        + "</h3>";
                     sessionStorage.clear();
                     cards.innerHTML = '';
                     document.querySelector("form").classList.add("d-none");
@@ -51,7 +56,6 @@
                 } else {
                     nouspex.classList.remove("d-none");
                     nouspex.textContent = '';
-                    let res = await r.json();
                     for (let i in res) {
                         nouspex.innerHTML += res[i] + '<br>';
                     }

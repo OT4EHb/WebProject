@@ -1,5 +1,7 @@
 <?php 
-function validate($request){
+function validate(&$request){    
+    require_once('cards.php');
+    getCards($request);
     $cards=$request['card'];
     if (empty($cards))
             return not_found();
@@ -14,9 +16,9 @@ function validate($request){
     }
     
     if (empty($data['FIO'])||
-        !preg_match('/^([А-ЯЁа-яё]|\s)+$/u', $data['FIO']))
+        !preg_match('/^([А-ЯЁа-яёa-zA-Z]|\s)+$/u', $data['FIO']))
     {
-        $errors['FIO']='ФИО должно состоять из русских символов';
+        $errors['FIO']='ФИО должно состоять из букв';
     } else if (strlen($data['FIO'])>100){
         $errors['FIO']='Слишком длинное ФИО';
     }

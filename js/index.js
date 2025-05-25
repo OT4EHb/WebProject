@@ -1,7 +1,12 @@
 ﻿let icons = [];
 let Cart = {};
 
-function update(name) {
+function update() {
+    for (let name in Cart) {
+        if (Object.keys(Cart[name]).every(x => Cart[name][x][1] === 0)) {
+            delete Cart[name];
+        }
+    }
     document.cookie = 'card=' + JSON.stringify(Cart);
 }
 
@@ -41,15 +46,12 @@ function fillModal(row, gramm, price, name) {
         if (Cart[name][gramm][1] > 0) {
             Cart[name][gramm][1] -= 100;
             row.children[3].innerHTML = Cart[name][gramm][1];
-            if (Object.keys(Cart[name]).every(x => Cart[name][x][1] === 0 )) {
-                delete Cart[name];
-            }
-            update(name);
+            update();
         }
     });
     row.children[4].addEventListener("click", function () {
         Cart[name][gramm][1] += 100;
-        update(name);
+        update();
         row.children[3].innerHTML = Cart[name][gramm][1];
     });
 }
@@ -88,10 +90,11 @@ window.addEventListener("DOMContentLoaded", function () {
     });
     let cookie = document.cookie.split('; ')
         .map(v => v.split('='))
-        .reduce((acc, v) => {
-            acc[v[0]] = v[1];
+        .reduce((acc, [k, v]) => {
+            acc[k] = v
             return acc;
-        });
+        }, {}
+        );
     Cart = cookie['card'] == null ? {}
         : JSON.parse(cookie['card']);
     if (Cart == null) Cart = {};

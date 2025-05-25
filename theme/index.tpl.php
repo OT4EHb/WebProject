@@ -45,6 +45,9 @@
     </header>
     <main class="col-xl-8 col-lg-10 mx-auto">
         <div class="row panel my-3">
+        <?php if ($c['user']){ ?>
+            <h3 class="text-center">Вы уже оформили заказ с этого аккаунта</h3>
+        <?php } else{ ?>
             <div class="col-2 col-md-1 px-1">
                 <object type="image/svg+xml" data="source/icons/fish_icon.svg" class="fish"></object>
             </div>
@@ -101,6 +104,7 @@
                     <h3>Оформить заказ</h3>
                 </a>
             </div>
+        <?php }?>
         </div>
     </main>
     <br>

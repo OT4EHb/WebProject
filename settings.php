@@ -17,6 +17,7 @@ $conf = array(
 
 $urlconf = array(
   '' => array('module' => 'front', 'auth'=>'user'),
+  '/^\/$/' => array('module' => 'front', 'auth'=>'user'),
   '/^cart$/'=>array('module'=>'cart', 'auth'=>'user'),
   '/^login$/'=>array('module'=>'login', 'auth'=>'user'),
 );

@@ -71,9 +71,8 @@
             <textarea placeholder="Дополнительные пожелания" name="descript" class="form-control mx-auto my-2"></textarea>
             <input type="submit" value="Отправить" class="btn-success btn d-block my-2 form-control mx-auto" id="buttonSave">
         </form>
-        <a class="btn btn-success my-2 rounded-5 text-center w-100 d-none uspex" href="../">
-            <h3>Спасибо за заказ!<br>С вами свяжутся через email</h3>
-        </a>
+        <div class="bg-success my-2 rounded-5 text-center w-100 d-none uspex">
+        </div>
     </main>
     <footer class="row justify-content-center mt-5">
         <p class="text-center">

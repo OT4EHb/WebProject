@@ -21,7 +21,7 @@ function db_query($query) {
   $res = $q->execute($args);
   if ($res) {
     while ($row = db_row($q)) {
-        $r[$row[0]] = $row;
+        $r[] = $row;
     }
   }
   return $r;
@@ -34,12 +34,7 @@ function db_result($query) {
   array_shift($args);
   $res = $q->execute($args);
   if ($res) {
-    if ($row = db_row($q)) {
-      return $row;
-    }
-    else {
-      return FALSE;
-    }
+    return $q->fetchAll(PDO::FETCH_NUM);
   }
   else {
     return FALSE;
@@ -101,10 +96,24 @@ function db_set($table, $data, $condition = []) {
     $params2 = [];
     foreach ($data as $column => $value) {
         $set[] = "$column = ?";
-        $params[] = $value;
+        $params2[] = $value;
     }
     $query = "UPDATE $table SET " . implode(', ', $set) . " WHERE " . implode(' AND ', $where);
     return db_command($query, ...$params2,...$params);
+}
+
+function db_delete($table, $condition = []) {
+    if (empty($condition)) {
+        return false;
+    }
+    $where = [];
+    $params = [];
+    foreach ($condition as $column => $value) {
+        $where[] = "$column = ?";
+        $params[] = $value;
+    }
+    $query = "DELETE FROM $table WHERE " . implode(' AND ', $where);
+    return db_command($query, ...$params);
 }
 
 function db_sort_sql() {

@@ -1,23 +1,5 @@
 ﻿window.addEventListener("DOMContentLoaded", function () {
     document.body.style.backgroundImage = "url(../source/BG.jpg)";
-    document.querySelector('#reg').addEventListener('click', e => {
-        e.preventDefault();
-        let response = fetch('/?q=register', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-        });
-        response.then(async r => {
-            let info = document.querySelector('#info');
-            let data = await r.json();
-            info.innerHTML = "Ваш логин: " + data['login'] +
-                "<br>Ваш пароль: " + data['password'];
-            info.classList.remove('d-none');
-            console.log(data);
-        });
-    });
     document.querySelector("form").addEventListener("submit", function (event) {
         event.preventDefault();
         const button = this.querySelector(".btn");
@@ -25,38 +7,29 @@
             return;
         }
         button.disabled = true;
-        let inputs = document.querySelectorAll("form > *");
-        let Cart = {};
+        let inputs = document.querySelectorAll("input");
+        let obj = {};
         inputs.forEach(function (i) {
             if (i.name !== "") {
-                Cart[i.name] = i.value;
+                obj[i.name] = i.value;
             }
         });
-        let response = fetch('/?q=cart', {
+        let response = fetch('/?q=login', {
             method: 'POST',
+            redirect: 'follow',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify(Cart)
+            body: JSON.stringify(obj)
         });
-        const nouspex = document.querySelector(".nouspex");
-        const uspex = document.querySelector(".uspex");
+        const info = document.querySelector('#info');
         response.then(async r => {
-            if (r.ok) {
-                nouspex.classList.add("d-none");
-                uspex.classList.remove("d-none");
-                sessionStorage.clear();
-                cards.innerHTML = '';
-                document.querySelector("form").classList.add("d-none");
-                document.querySelector(".zakaz").classList.add("d-none");
+            info.classList.remove('d-none');
+            if (r.redirected) {
+                window.location.href = r.url;
             } else {
-                nouspex.classList.remove("d-none");
-                nouspex.textContent = '';
-                let res = await r.json();
-                for (let i in res) {
-                    nouspex.innerHTML += res[i] + '<br>';
-                }
+                info.textContent = "Неверный логин или пароль";
             }
             button.disabled = false;
         });

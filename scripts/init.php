@@ -89,11 +89,9 @@ function conf($key) {
 // Формирует сокращенные URL для ссылок или для текущей страницы.
 function url($addr = '', $params = array()) {
   global $conf;
-  // Если вызвали без параметров, до делаем ссылку на текущую страницу.
   if ($addr == '' && isset($_GET['q'])) {
     $addr = strip_tags($_GET['q']);
   }
-  // В зависимоти от настроек проекта генерируем чистые ссылки или ссылки с параметром.
   $clean = conf('clean_urls');
   $r = $clean ? '/' : '?q=';
   $r .= strip_tags($addr);
@@ -105,7 +103,6 @@ function url($addr = '', $params = array()) {
   return $r;
 }
 
-// Возвращает редирект 302 с заголовком Location.
 function redirect($l = NULL) {
   if (is_null($l)) {
     $location = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -137,7 +134,6 @@ function bad_request($res) {
     );
 }
 
-// Функция загрузки шаблона с использованием буферизации вывода.
 function theme($t, $c = array()) {
   $template = conf('theme') . '/' . str_replace('/', '_', $t) . '.tpl.php';
   if (!file_exists($template)) {

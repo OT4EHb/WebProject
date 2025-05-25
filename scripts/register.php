@@ -11,8 +11,8 @@ function randomPassword($length = 12) {
 }
 
 function register() {
-    $c=db_query("SELECT 'id',MAX(user_id) FROM users")['id'][1];
-    $data['id']=$c?$c:0;
+    $c=db_query("SELECT MAX(user_id) FROM users");
+    $data['id']=($c?$c[0][0]:0)+1;
     $data['login']="user".$data['id'];
     $data['password']=randomPassword();
     db_set('users',
