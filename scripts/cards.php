@@ -14,4 +14,13 @@ function getCards(&$request){
 	}
 	$request['card']=$cards;
 }
+
+function getValues(&$request){
+	if (empty($request['user'])){
+		$request['values']=array_fill(0,7,'');
+		return;
+	}
+	require_once('db.php');
+	$request['values']=db_get('orders','*',['order_id'=>$request['user']])[0];
+}
 ?>

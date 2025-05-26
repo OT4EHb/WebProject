@@ -1,5 +1,6 @@
 <?php 
-function validate(&$request){    
+function validate(&$request){ 
+    require_once('db.php');
     require_once('cards.php');
     getCards($request);
     $cards=$request['card'];

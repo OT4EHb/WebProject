@@ -7,7 +7,6 @@ function cart_get($request) {
 }
 
 function cart_post($request) {
-    require_once('db.php');
     include_once('validate.php');
     if($r=validate($request)){
         return $r;

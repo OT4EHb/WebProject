@@ -37,6 +37,8 @@
                 require_once("cards.php");
                 getCards($c);
                 $cards=$c['card'];
+                getValues($c);
+                $values=$c['values'];
                 if (empty($cards)){ ?>                    
                 <a href="/" class="btn btn-primary my-4 mx-auto d-block" id="evileye">
                     <h3 class="mb-0">Вы ничего не заказали,<br>бегом исправляться</h3>
@@ -62,14 +64,22 @@
         <h3 class="bg-danger text-center text-white my-2 rounded-5 d-none nouspex">Не успешно, повторите попытку</h3>
         <h3 class="text-center my-2 zakaz">Оформите заказ (Итоговая стоимость может отличаться):</h3>
         <form action="/" method="post" class="p-2 bg-primary rounded-5">
-            <input placeholder="Название компании" name="company" required class="form-control mx-auto my-2">
-            <input placeholder="ФИО заказчика" name="FIO" required class="form-control mx-auto my-2">
-            <input type="tel" placeholder="Номер телефона" name="tel" required class="form-control mx-auto my-2">
-            <input type="email" placeholder="Электронная почта" name="email" required class="form-control mx-auto my-2">
-            <input type="date" name="date" disabled class="form-control mx-auto my-2">
-            <input type="text" name="cost" disabled class="form-control mx-auto my-2">
-            <textarea placeholder="Дополнительные пожелания" name="descript" class="form-control mx-auto my-2"></textarea>
-            <input type="submit" value="Отправить" class="btn-success btn d-block my-2 form-control mx-auto" id="buttonSave">
+            <input placeholder="Название компании" name="company" required value="<?php echo $values[1];?>"
+                class="form-control mx-auto my-2">
+            <input placeholder="ФИО заказчика" name="FIO" required value="<?php echo $values[2];?>"
+                class="form-control mx-auto my-2">
+            <input type="tel" placeholder="Номер телефона" name="tel" required value="<?php echo $values[3];?>"
+                class="form-control mx-auto my-2">
+            <input type="email" placeholder="Электронная почта" name="email" required value="<?php echo $values[4];?>"
+                class="form-control mx-auto my-2">
+            <input type="date" name="date" disabled value="<?php echo $values[5];?>"
+                class="form-control mx-auto my-2">
+            <input type="text" name="cost" disabled 
+                class="form-control mx-auto my-2">
+            <textarea placeholder="Дополнительные пожелания" name="descript" 
+                class="form-control mx-auto my-2"><?php echo $values[6];?></textarea>
+            <input type="submit" value="Отправить" 
+                class="btn-success btn d-block my-2 form-control mx-auto" id="buttonSave">
         </form>
         <div class="bg-success my-2 rounded-5 text-center w-100 d-none uspex">
         </div>

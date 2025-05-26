@@ -2,7 +2,8 @@
     document.body.style.backgroundImage = "url(../source/BG.jpg)";
     const cards = document.querySelector("#cards").children;
     const elDate = document.querySelector("input[type=date]");
-    elDate.value = new Date().toLocaleDateString("en-CA");
+    if (elDate.value == "")
+        elDate.value = new Date().toLocaleDateString("en-CA");
     let sum = 0;
     for (let i = 0; i < cards.length;i++) {
         let obj = cards[i].children[1].children;
