@@ -11,11 +11,11 @@ function randomPassword($length = 12) {
 }
 
 function register() {
-    $c=db_query("SELECT MAX(user_id) FROM users");
+    $c=db_query("SELECT MAX(user_id) FROM userss");
     $data['id']=($c?$c[0][0]:0)+1;
     $data['login']="user".$data['id'];
     $data['password']=randomPassword();
-    db_set('users',
+    db_set('userss',
         ['username'=>$data['login'],
         'pass'=>password_hash($data['password'],PASSWORD_DEFAULT)]);
     return $data;

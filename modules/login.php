@@ -11,7 +11,7 @@ function login_get($request) {
 function login_post($request) {
     $data=$request['data'];
     require_once('db.php');
-    $r=db_get('users',['user_id','pass'],['username'=>$data['login']]);
+    $r=db_get('userss',['user_id','pass'],['username'=>$data['login']]);
     if ($r==null||!password_verify($data['pass'],$r[0][1])){
         $request['error']=true;
         return bad_request($request['js']?"":
