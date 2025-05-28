@@ -1,5 +1,5 @@
 ﻿window.addEventListener("DOMContentLoaded", function () {
-    document.body.style.backgroundImage = "url(../source/BG.jpg)";
+    document.body.style.backgroundImage = "url(source/BG.jpg)";
     document.querySelector("form").addEventListener("submit", function (event) {
         event.preventDefault();
         const button = this.querySelector(".btn");
@@ -14,7 +14,7 @@
                 obj[i.name] = i.value;
             }
         });
-        let response = fetch('/?q=login', {
+        let response = fetch('?q=login', {
             method: 'POST',
             redirect: 'follow',
             headers: {

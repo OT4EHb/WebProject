@@ -82,7 +82,7 @@ function sort() {
 }
 
 window.addEventListener("DOMContentLoaded", function () {
-    document.body.style.backgroundImage = "url(../source/BG.jpg)";
+    document.body.style.backgroundImage = "url(./source/BG.jpg)";
     list = document.querySelector("#datalistOptions");
     const cards = document.querySelectorAll(".card");
     cards.forEach(i => {

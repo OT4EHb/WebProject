@@ -1,5 +1,5 @@
 ﻿window.addEventListener("DOMContentLoaded", function () {
-    document.body.style.backgroundImage = "url(../source/BG.jpg)";
+    document.body.style.backgroundImage = "url(source/BG.jpg)";
     const cards = document.querySelector("#cards").children;
     const elDate = document.querySelector("input[type=date]");
     if (elDate.value == "")
@@ -18,7 +18,7 @@
                 Cart[i.name] = i.value;
             }
         });
-        let response = fetch('/?q=cart', {
+        let response = fetch('?q=cart', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

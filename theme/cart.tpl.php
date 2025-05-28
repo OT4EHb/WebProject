@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Корзина-ЮГ</title>
-    <link rel="icon" href="/source/Logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <base href="."></base>
+    <link rel="icon" href="source/Logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -16,7 +17,7 @@
     <header>
         <div class="row head">
             <div class="col-1">
-                <img src="/source/Logo.png">
+                <img src="source/Logo.png">
             </div>
             <a class="col d-flex justify-content-end text-dark text-decoration-none" 
                 <?php if (empty($c['user'])){ ?>
@@ -28,7 +29,7 @@
                 <?php } ?>
             </a>
             <a class="col-1 d-flex justify-content-end" href="/">
-                <img src="/source/icons/house-door.svg">
+                <img src="source/icons/house-door.svg">
             </a>
         </div>
     </header>
@@ -48,7 +49,7 @@
                 else foreach($cards as $k => $v){ ?>
             <div class="row my-4">
                 <div class="col-4 col-md-3 d-flex justify-content-center flex-column p-1">
-                    <img src="/source/card/<?php print($k)?>.jpeg" class="rounded-5 w-100">
+                    <img src="source/card/<?php print($k)?>.jpeg" class="rounded-5 w-100">
                 </div>
                 <div class="col-8 col-md-9 bg-primary text-white rounded-5 p-3 fs-5 bodycart">
                     <?php foreach($v as $pr=>$arr){?>
@@ -89,11 +90,12 @@
         <div class="bg-success my-2 rounded-5 text-center w-100 <?php if (empty($c['response'])) echo 'd-none'?> uspex">
         <?php if(!empty($c['response'])) {
             $res=$c['response'];
-            echo "<h3>Спасибо за заказ! Стоимость составила: " . strval($res['cost']) .
+             echo (isset($res['auth'])?"<h3>Спасибо за заказ! Стоимость составила: " . strval($res['cost']) .
                         "руб<br>Вы можете изменить данные формы:".
                         "<br>Ваш логин: " . strval($res['auth']['login'])
                         . "<br>Ваш пароль: " .strval($res['auth']['password'])
-                        ."</h3>";
+                        "</h3>":
++               "<h3>Спасибо за заказ!</h3>");
          }?>
         </div>
     </main>

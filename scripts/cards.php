@@ -7,7 +7,8 @@ function getCards(&$request){
 	require_once('db.php');
 	$info=db_query("SELECT oc.card_id, oc.card_gramm, ci.card_price,oc.size
 		 FROM order_card oc JOIN card_info ci ON
-		oc.card_id=ci.card_id AND oc.card_gramm= ci.card_gramm;");
+		oc.card_id=ci.card_id AND oc.card_gramm= ci.card_gramm
+		WHERE oc.order_id=?;",$request['user']);
 	$cards=[];
 	foreach($info as $i=>$row){
 		$cards[$row[0]][$row[1]]=array($row[2],$row[3]);

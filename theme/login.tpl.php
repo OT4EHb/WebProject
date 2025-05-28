@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Логин-ЮГ</title>
-    <link rel="icon" href="/source/Logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="source/Logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -22,10 +22,10 @@
     <header>
         <div class="row head">
             <div class="col-1">
-                <img src="/source/Logo.png">
+                <img src="source/Logo.png">
             </div>
             <a class="col d-flex justify-content-end" href="../">
-                <img src="/source/icons/house-door.svg">
+                <img src="source/icons/house-door.svg">
             </a>
         </div>
     </header>
