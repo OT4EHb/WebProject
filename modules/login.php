@@ -13,7 +13,10 @@ function login_post($request) {
     require_once('db.php');
     $r=db_get('users',['user_id','pass'],['username'=>$data['login']]);
     if ($r==null||!password_verify($data['pass'],$r[0][1])){
-        return bad_request("Неверный логин или пароль");
+        $request['error']=true;
+        return bad_request($request['js']?"":
+            theme('login',$request)
+        );
     }
     session_name("Kaneki");
     session_start();

@@ -28,8 +28,6 @@
             info.classList.remove('d-none');
             if (r.redirected) {
                 window.location.href = r.url;
-            } else {
-                info.textContent = "Неверный логин или пароль";
             }
             button.disabled = false;
         });

@@ -30,7 +30,9 @@
         </div>
     </header>
     <main class="mx-auto">
-        <p class="d-none bg-info maxw600 mx-auto text-center" id="info"></p>
+        <p class="<?php if (empty($c['error'])) echo "d-none";?> bg-info maxw600 mx-auto text-center" id="info">
+            Неверный логин или пароль
+        </p>
         <form action="<?php print(conf('clean_urls')?'login':'?q=login')?>" 
         method="post" class="px-2 maxw600 position-absolute top-50 translate-middle start-50">
             <label class="form-control bg-warning border-0 form-label w-100 text-center">

@@ -95,7 +95,6 @@ function url($addr = '', $params = array()) {
   $clean = conf('clean_urls');
   $r = $clean ? '/' : '?q=';
   $r .= strip_tags($addr);
-  // Добавляем параметры.
   if (count($params) > 0) {
     $r .= $clean ? '?' : '&';
     $r .= implode('&', $params);

@@ -1,5 +1,4 @@
 <?php
-//CQivpQ6dXI2s
 define('DISPLAY_ERRORS', 1);
 define('INCLUDE_PATH', './scripts' . PATH_SEPARATOR . './modules');
 $conf = array(
