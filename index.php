@@ -13,6 +13,7 @@ $request = array(
         json_decode(file_get_contents('php://input'), true)
         :$_POST)
     :$_GET,
+    'js'=>$_SERVER['HTTP_ACCEPT']=='application/json',
 );
 
 $response = init($request, $urlconf);

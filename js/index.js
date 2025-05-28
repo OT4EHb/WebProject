@@ -94,9 +94,9 @@ window.addEventListener("DOMContentLoaded", function () {
             acc[k] = v
             return acc;
         }, {}
-        );
+    );
     Cart = cookie['card'] == null ? {}
-        : JSON.parse(cookie['card']);
+        : JSON.parse(decodeURIComponent(cookie['card']));
     if (Cart == null) Cart = {};
     document.querySelectorAll(".interact").forEach(function (i) {
         i.contentWindow.addEventListener("DOMContentLoaded", function () {

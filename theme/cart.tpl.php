@@ -18,15 +18,16 @@
             <div class="col-1">
                 <img src="/source/Logo.png">
             </div>
-            <?php 
-            $col='col';
-            if (empty($c['user'])){
-                $col='col-1'; ?>
-            <a class="col d-flex justify-content-end text-dark text-decoration-none" href=<?php print(conf('clean_urls')?'login':'?q=login')?>>
+            <a class="col d-flex justify-content-end text-dark text-decoration-none" 
+                <?php if (empty($c['user'])){ ?>
+                href=<?php print(conf('clean_urls')?'login':'?q=login')?>>
                 <h2>Войти</h2>
+                <?php } else { ?>
+                href=<?php print(conf('clean_urls')?'logout':'?q=logout')?>>
+                <h2>Выйти</h2>
+                <?php } ?>
             </a>
-            <?php }?>
-            <a class="<?php echo $col;?> d-flex justify-content-end" href="/">
+            <a class="col-1 d-flex justify-content-end" href="/">
                 <img src="/source/icons/house-door.svg">
             </a>
         </div>
@@ -39,7 +40,7 @@
                 $cards=$c['card'];
                 getValues($c);
                 $values=$c['values'];
-                if (empty($cards)){ ?>                    
+                if (empty($cards)&&!isset($c['response'])){ ?>                    
                 <a href="/" class="btn btn-primary my-4 mx-auto d-block" id="evileye">
                     <h3 class="mb-0">Вы ничего не заказали,<br>бегом исправляться</h3>
                 </a>
@@ -61,27 +62,39 @@
             </div>
             <?php }?>
         </div>
-        <h3 class="bg-danger text-center text-white my-2 rounded-5 d-none nouspex">Не успешно, повторите попытку</h3>
-        <h3 class="text-center my-2 zakaz">Оформите заказ (Итоговая стоимость может отличаться):</h3>
-        <form action="/" method="post" class="p-2 bg-primary rounded-5">
-            <input placeholder="Название компании" name="company" required value="<?php echo $values[1];?>"
+        <h3 class="bg-danger text-center text-white my-2 rounded-5 nouspex <?php if (empty($c['errors'])) echo 'd-none'?>">
+        <?php foreach($c['errors'] as $k=>$v){
+            echo $v.'<br>';
+        } ?>
+        </h3>
+        <?php if (empty($c['response'])){?>
+        <h3 class="text-center my-2 zakaz">Оформите заказ:</h3>
+        <form action="<?php print(conf('clean_urls')?'cart':'?q=cart')?>" method="post" class="p-2 bg-primary rounded-5">
+            <input placeholder="Название компании" name="company" required value="<?php echo $values[0];?>"
                 class="form-control mx-auto my-2">
-            <input placeholder="ФИО заказчика" name="FIO" required value="<?php echo $values[2];?>"
+            <input placeholder="ФИО заказчика" name="FIO" required value="<?php echo $values[1];?>"
                 class="form-control mx-auto my-2">
-            <input type="tel" placeholder="Номер телефона" name="tel" required value="<?php echo $values[3];?>"
+            <input type="tel" placeholder="Номер телефона" name="tel" required value="<?php echo $values[2];?>"
                 class="form-control mx-auto my-2">
-            <input type="email" placeholder="Электронная почта" name="email" required value="<?php echo $values[4];?>"
+            <input type="email" placeholder="Электронная почта" name="email" required value="<?php echo $values[3];?>"
                 class="form-control mx-auto my-2">
-            <input type="date" name="date" disabled value="<?php echo $values[5];?>"
-                class="form-control mx-auto my-2">
-            <input type="text" name="cost" disabled 
+            <input type="date" name="date" required value="<?php echo $values[4];?>"
                 class="form-control mx-auto my-2">
             <textarea placeholder="Дополнительные пожелания" name="descript" 
-                class="form-control mx-auto my-2"><?php echo $values[6];?></textarea>
+                class="form-control mx-auto my-2"><?php echo $values[5];?></textarea>
             <input type="submit" value="Отправить" 
                 class="btn-success btn d-block my-2 form-control mx-auto" id="buttonSave">
-        </form>
-        <div class="bg-success my-2 rounded-5 text-center w-100 d-none uspex">
+        </form>        
+        <?php }?>
+        <div class="bg-success my-2 rounded-5 text-center w-100 <?php if (empty($c['response'])) echo 'd-none'?> uspex">
+        <?php if(!empty($c['response'])) {
+            $res=$c['response'];
+            echo "<h3>Спасибо за заказ! Стоимость составила: " . strval($res['cost']) .
+                        "руб<br>Вы можете изменить данные формы:".
+                        "<br>Ваш логин: " . strval($res['auth']['login'])
+                        . "<br>Ваш пароль: " .strval($res['auth']['password'])
+                        ."</h3>";
+         }?>
         </div>
     </main>
     <footer class="row justify-content-center mt-5">

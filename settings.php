@@ -1,4 +1,5 @@
 <?php
+//CQivpQ6dXI2s
 define('DISPLAY_ERRORS', 1);
 define('INCLUDE_PATH', './scripts' . PATH_SEPARATOR . './modules');
 $conf = array(
@@ -20,6 +21,8 @@ $urlconf = array(
   '/^\/$/' => array('module' => 'front', 'auth'=>'user'),
   '/^cart$/'=>array('module'=>'cart', 'auth'=>'user'),
   '/^login$/'=>array('module'=>'login', 'auth'=>'user'),
+  '/^logout$/'=>array('module'=>'logout', 'auth'=>'user'),
+  '/^add$/'=>array('module'=>'add', 'auth'=>'user'),
 );
 
 header('Cache-Control: no-cache, must-revalidate');

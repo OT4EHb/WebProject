@@ -21,15 +21,16 @@
             <div class="col-1">
                 <img src="source/Logo.png">
             </div>
-            <?php 
-            $col='col';
-            if (empty($c['user'])){
-                $col='col-1'; ?>
-            <a class="col d-flex justify-content-end text-dark text-decoration-none" href=<?php print(conf('clean_urls')?'login':'?q=login')?>>
+            <a class="col d-flex justify-content-end text-dark text-decoration-none" 
+                <?php if (empty($c['user'])){ ?>
+                href=<?php print(conf('clean_urls')?'login':'?q=login')?>>
                 <h2>Войти</h2>
+                <?php } else { ?>
+                href=<?php print(conf('clean_urls')?'logout':'?q=logout')?>>
+                <h2>Выйти</h2>
+                <?php } ?>
             </a>
-            <?php }?>
-            <a class="<?php echo $col;?> d-flex justify-content-end" href=<?php print(conf('clean_urls')?'cart':'?q=cart')?>>
+            <a class="col-1 d-flex justify-content-end" href=<?php print(conf('clean_urls')?'cart':'?q=cart')?>>
                 <img src="source/icons/cart.svg">
             </a>
         </div>
@@ -87,7 +88,8 @@
                     <img src="<?php print($k[3])?>" class="card-img-top" alt="...">
                     <div class="card-body p-0 p-md-2 d-flex flex-column justify-content-between">
                         <h5 class="card-title"><?php print($k[1])?></h5>
-                        <button class="btn btn-primary" data-bs-target="#detalno" data-bs-toggle="modal">Подробнее</button>
+                        <a class="btn btn-primary" data-bs-target="#detalno" href="<?php echo (conf('clean_urls')?'add?id=':'?q=add&id=').$k[0]; ?>"
+                            data-bs-toggle="modal">Добавить</a>
                     </div>
                     <div class="d-none">
                         <?php print('<span>'.$k[2].'</span>'.

@@ -1,7 +1,7 @@
 <?php
 function getCards(&$request){
 	if (empty($request['user'])){
-        $request['card']=empty($_COOKIE['card'])?'':json_decode($_COOKIE['card']);
+        $request['card']=empty($_COOKIE['card'])?[]:json_decode($_COOKIE['card']);
         return;
     }
 	require_once('db.php');
@@ -17,10 +17,18 @@ function getCards(&$request){
 
 function getValues(&$request){
 	if (empty($request['user'])){
-		$request['values']=array_fill(0,7,'');
-		return;
+		$request['values']=(empty($_COOKIE['values'])?
+			array_fill(0,7,''):
+			unserialize($_COOKIE['values'])
+		);
+	} else {
+		require_once('db.php');
+		$request['values']=db_get('orders','*',['order_id'=>$request['user']])[0];
+		array_shift($request['values']);
 	}
-	require_once('db.php');
-	$request['values']=db_get('orders','*',['order_id'=>$request['user']])[0];
+	$request['values']=array_map(
+        fn ($value): string => strip_tags($value),
+        $request['values']
+    );
 }
 ?>

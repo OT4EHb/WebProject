@@ -4,18 +4,6 @@
     const elDate = document.querySelector("input[type=date]");
     if (elDate.value == "")
         elDate.value = new Date().toLocaleDateString("en-CA");
-    let sum = 0;
-    for (let i = 0; i < cards.length;i++) {
-        let obj = cards[i].children[1].children;
-        let sumi = 0;
-        for (let j = 0; j < obj.length; j++) {
-            let erst = obj[j].children;
-            sumi += Number(erst[1].textContent.split(' ')[0])
-                * Number(erst[2].textContent.split(' ')[0]);
-        }
-        sum += sumi;
-    }
-    elDate.nextElementSibling.value = sum + " руб";
     document.querySelector("form").addEventListener("submit", function (event) {
         event.preventDefault();
         const button = this.querySelector(".btn");

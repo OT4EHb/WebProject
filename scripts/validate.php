@@ -4,10 +4,12 @@ function validate(&$request){
     require_once('cards.php');
     getCards($request);
     $cards=$request['card'];
-    if (empty($cards))
-            return not_found();
     $data=$request['data'];
     $errors=[];
+
+    if (empty($cards))
+        $errors['card']="Где карта, Билли?";
+
     if (empty($data['company'])||
         !preg_match('/^([А-ЯЁа-яёa-zA-Z]|\s)+$/u', $data['company']))
     {
@@ -33,6 +35,14 @@ function validate(&$request){
     } else if(strlen($data['email'])>30){
         $errors['email']='Email слишком длинное';
     }
+
+    $inputDate = new DateTime($data['date']);
+    $minDate = new DateTime('today');
+    if(!DateTime::createFromFormat('Y-m-d', $data['date'])){
+        $errors['date']="Некоректная дата";
+    } else if($inputDate<$minDate){
+        $errors['date']="Мы не успеем доставить";
+    }
     
     if (strlen($data['descript'])>200){
         $errors['descript']='Слишком много желаете';
@@ -49,8 +59,10 @@ function validate(&$request){
             }
         }
     }
-    if (!empty($errors)){
-        return bad_request(json_encode($errors));
+    $request['errors']=$errors;
+    if (empty($request['user'])){
+        $_COOKIE['values']=serialize(array_values($data));
+        setcookie('values',$_COOKIE['values']);
     }
 }
 ?>
