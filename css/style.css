@@ -10,7 +10,10 @@ header {
     position: relative;
 }
 
-
+footer {
+    /*background: url("../source/istockphoto-1323709916-640_adpp_is.gif");*/
+    font-size: 0.7rem;
+}
 
 .head img, .panel > *, .zakaz{
     max-height: 8vmin;
