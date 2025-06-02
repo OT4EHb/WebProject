@@ -10,6 +10,7 @@ function randomPassword($length = 12) {
     return $pass;
 }
 
+
 function register() {
     $c=db_query("SELECT MAX(user_id) FROM userss");
     $data['id']=($c?$c[0][0]:0)+1;
