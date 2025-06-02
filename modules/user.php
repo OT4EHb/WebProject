@@ -6,4 +6,5 @@ function auth(&$request, $r) {
         return $_SESSION['user']??null;
     }
     return null;
+    
   }

@@ -10,6 +10,27 @@ function update() {
     document.cookie = 'card=' + JSON.stringify(Cart);
 }
 
+function fillModal(row, gramm, price, name) {
+    if (Cart[name] == null) Cart[name] = {};
+    if (Cart[name][gramm] == null)
+        Cart[name][gramm] = [price, 0];
+    row.children[0].textContent = gramm + "гр";
+    row.children[1].textContent = price + "руб";
+    row.children[3].innerHTML = Cart[name][gramm][1];
+    row.children[2].addEventListener("click", function () {
+        if (Cart[name][gramm][1] > 0) {
+            Cart[name][gramm][1] -= 100;
+            row.children[3].innerHTML = Cart[name][gramm][1];
+            update();
+        }
+    });
+    row.children[4].addEventListener("click", function () {
+        Cart[name][gramm][1] += 100;
+        update();
+        row.children[3].innerHTML = Cart[name][gramm][1];
+    });
+}
+
 function createModal() {
     let detalno = document.getElementById("detalno");
     const info = this.parentElement.nextElementSibling;
@@ -33,27 +54,6 @@ function createModal() {
     }
     let name = this.previousElementSibling.textContent;
     window.history.pushState({ modal: "true" }, "", "#" + name);
-}
-
-function fillModal(row, gramm, price, name) {
-    if (Cart[name] == null) Cart[name] = {};
-    if (Cart[name][gramm] == null)
-        Cart[name][gramm] = [price, 0];
-    row.children[0].textContent = gramm + "гр";
-    row.children[1].textContent = price + "руб";
-    row.children[3].innerHTML = Cart[name][gramm][1];
-    row.children[2].addEventListener("click", function () {
-        if (Cart[name][gramm][1] > 0) {
-            Cart[name][gramm][1] -= 100;
-            row.children[3].innerHTML = Cart[name][gramm][1];
-            update();
-        }
-    });
-    row.children[4].addEventListener("click", function () {
-        Cart[name][gramm][1] += 100;
-        update();
-        row.children[3].innerHTML = Cart[name][gramm][1];
-    });
 }
 
 function find(event) {
