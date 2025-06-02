@@ -8,7 +8,6 @@ function login_get($request) {
     );
 }
 
-
 function login_post($request) {
     $data=$request['data'];
     require_once('db.php');
